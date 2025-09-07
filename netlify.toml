@@ -1,8 +1,8 @@
 [build]
-  command = ""
   publish = "."
+  command = ""
 
 [[redirects]]
-  from = "/redact"
-  to = "/redact.html"
+  from = "/*"
+  to = "/index.html"
   status = 200
