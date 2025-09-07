@@ -1,34 +1,75 @@
 body {
-  font-family: sans-serif;
-  background: #111;
-  color: #eee;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #0d1117;
+  color: #fff;
+  text-align: center;
+}
+
+header {
   padding: 20px;
+  background: #161b22;
 }
-.container {
-  max-width: 800px;
-  margin: 0 auto;
+
+header h1 {
+  margin: 0;
+  color: #00d4ff;
 }
-.logo {
-  font-weight: 700;
-}
-.halo {
-  color: #FFD54A;
-}
-.btn {
-  display: inline-block;
-  padding: 10px 16px;
-  margin: 4px;
-  border-radius: 6px;
+
+nav a {
+  color: #44ff44;
+  margin: 0 10px;
   text-decoration: none;
 }
-.primary {
-  background: #FFD54A;
-  color: #111;
+
+main {
+  padding: 40px 20px;
 }
-.success {
-  background: #6ee7b7;
-  color: #111;
+
+footer {
+  background: #161b22;
+  padding: 15px;
+  margin-top: 40px;
 }
-.muted {
-  color: #aaa;
+
+.pricing-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.plan {
+  background: #1f2937;
+  border: 2px solid #00d4ff;
+  border-radius: 10px;
+  padding: 20px;
+  width: 280px;
+}
+
+.plan h2 {
+  margin-top: 0;
+  color: #00d4ff;
+}
+
+.plan p {
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 10px;
+  background: linear-gradient(135deg, #44ff44, #00d4ff);
+  color: #000;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.btn:hover {
+  transform: scale(1.05);
 }
