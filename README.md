@@ -1,37 +1,65 @@
-# ✒️ DocuGod — AI-Powered Document Editor
+# DocuGod — AI-Powered Document Editor  
 
-DocuGod is a prototype web app built by **TA GuruLabs + AIDES**.  
-It allows users to **upload PDFs**, **redact sensitive text**, **add signatures**, and **export instantly**.  
+🚀 Built by **TA GuruLabs + AIDES**  
+DocuGod is a prototype AI-powered document editor that lets you:  
+- Upload PDFs  
+- Redact sensitive text  
+- Add digital signatures (coming soon)  
+- Export instantly (PDF ready to send)  
 
-⚠️ For documents you own. Passports/visas: redaction only.
-
----
-
-## 🚀 Live Demo
-👉 [Netlify Demo](https://YOUR_NETLIFY_URL)  
-👉 [Free / Pro / Business Plans on PayHip](https://payhip.com/aj4359)
+⚡ Designed for **business, legal, and financial documents** where speed and accuracy matter.  
 
 ---
 
-## ✨ Features
-- Upload any PDF file
-- Draw black boxes to redact sensitive info
-- Drop in a signature image (coming soon)
-- Export instantly (new PDF generated)
-- Plans:
-  - **Free** → watermark enabled  
-  - **Pro** → watermark removed, AI Co-Pilot (coming soon)  
-  - **Business** → team seats + branding  
+## 🌐 Live Demo  
+👉 [Netlify Demo](https://sparkly-sfogliatella-8b391c.netlify.app)  
+👉 [Pricing Plans (Free / Pro / Business)](pricing.html)  
 
 ---
 
-## 🛠 Tech Stack
+## 💳 Pricing (via PayHip)  
+- **Free Plan** → [Get Started](https://payhip.com/b/Urc5P)  
+- **Pro Plan** → [Upgrade](https://payhip.com/b/EtBob)  
+- **Business Plan** → [Go Enterprise](https://payhip.com/b/D2t37)  
+
+💡 *Limited-time launch offer — pricing may change as features expand.*  
+
+---
+
+## ✨ Features  
+- 📄 Upload any PDF file  
+- 🕶️ Draw black boxes to redact sensitive info  
+- ✍️ Drop in a signature image (coming soon)  
+- ⚡ Export instantly (new PDF generated)  
+- 🛡️ Secure handling (for documents you own — passports/visas: redaction only)  
+
+---
+
+## 🛠 Tech Stack  
 - **Frontend:** HTML5, CSS3, JavaScript  
 - **PDF Rendering:** [PDF.js](https://mozilla.github.io/pdf.js/)  
 - **PDF Editing:** [PDF-Lib](https://pdf-lib.js.org/)  
 - **Hosting:** [Netlify](https://www.netlify.com/)  
-- **Payments:** [PayHip](https://payhip.com/aj4359)  
+- **Payments:** [PayHip](https://payhip.com/)  
 
 ---
 
-## 📂 Repo Structure
+## 📂 Repo Structure  
+
+---
+
+## 🔮 Roadmap  
+- [ ] AI Co-Pilot for smarter editing  
+- [ ] Multi-user team access  
+- [ ] Business dashboards  
+- [ ] Mobile-first editor  
+
+---
+
+## ⚠️ Disclaimer  
+DocuGod is a prototype. Use it only for **documents you own**.  
+We do **not** provide legal advice — redact passports/visas only.  
+
+---
+
+© 2025 **TA GuruLabs + AIDES**  
