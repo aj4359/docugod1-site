@@ -1,49 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DocuGod – Pricing</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DocuGod — Pricing</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <h1>DocuGod Pricing</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="pricing.html" class="active">Pricing</a>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo-mark">✒️</span>
+      <span class="logo">DocuGod</span>
+    </div>
+    <nav class="nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="pricing.html" class="nav-link active">Pricing</a>
     </nav>
   </header>
 
-  <main>
-    <section>
-      <h2>Choose Your Plan</h2>
-      <div class="pricing-container">
+  <main class="container">
+    <div class="pricing-head">
+      <span class="pill">Limited time</span>
+      <h1>Choose your plan</h1>
+      <p class="subtitle">No freemium. For documents you own. Passports/visas: redaction only.</p>
+    </div>
 
-        <div class="pricing-card">
-          <h3>Free</h3>
-          <p>Watermarked PDF export. Try it now.</p>
-          <a href="https://payhip.com/b/Urc5P" class="btn">Get Free</a>
-        </div>
-
-        <div class="pricing-card">
-          <h3>Pro</h3>
-          <p>Watermark removed + AI Co-Pilot (coming soon).</p>
-          <a href="https://payhip.com/b/EtBob" class="btn">Get Pro – $12</a>
-        </div>
-
-        <div class="pricing-card">
-          <h3>Business</h3>
-          <p>Team seats + branding + full document engine.</p>
-          <a href="https://payhip.com/b/D2t37" class="btn">Get Business – $79</a>
-        </div>
-
+    <div class="pricing-grid">
+      <div class="plan">
+        <h3>Free</h3>
+        <p class="price">$0 <span class="per">/ forever</span></p>
+        <ul class="bullets">
+          <li>Watermark enabled exports</li>
+          <li>Redaction tools</li>
+          <li>Basic support</li>
+        </ul>
+        <a class="btn cta" href="https://payhip.com/b/Urc5P" target="_blank" rel="noopener">Start Free</a>
       </div>
+
+      <div class="plan">
+        <h3>Pro</h3>
+        <p class="price">$12 <span class="per">/ month</span></p>
+        <ul class="bullets">
+          <li>No watermark</li>
+          <li>AI Co-Pilot (coming soon)</li>
+          <li>Email support (48h)</li>
+        </ul>
+        <a class="btn cta" href="https://payhip.com/b/EtBob" target="_blank" rel="noopener">Get Pro — $12</a>
+      </div>
+
+      <div class="plan highlight">
+        <div class="badge">⭐ Best Value</div>
+        <h3>Business</h3>
+        <p class="price">$79 <span class="per">/ month</span></p>
+        <ul class="bullets">
+          <li>Everything in Pro</li>
+          <li>Team seats + branding</li>
+          <li>Priority support (4h)</li>
+        </ul>
+        <a class="btn cta alt" href="https://payhip.com/b/D2t37" target="_blank" rel="noopener">Get Business — $79</a>
+      </div>
+    </div>
+
+    <section class="faq">
+      <h2>FAQ</h2>
+      <details>
+        <summary>Is DocuGod legal to use?</summary>
+        <p>Yes. DocuGod is designed for editing/redacting documents you own. Passports/visas are redaction-only. Fraudulent use is strictly forbidden.</p>
+      </details>
+      <details>
+        <summary>How is my data secured?</summary>
+        <p>Prototype: files stored only for the duration of your session. Production: encryption at rest, audit logs, SSO options.</p>
+      </details>
+      <details>
+        <summary>Can I cancel anytime?</summary>
+        <p>Yes. Plans are monthly unless you choose annual billing.</p>
+      </details>
     </section>
+
+    <div class="back-nav">
+      <a href="index.html" class="nav-link">← Back to home</a>
+    </div>
   </main>
 
-  <footer>
-    <p>© 2025 TA GuruLabs + AIDES</p>
+  <footer class="foot">
+    <small>© 2025 TA GuruLabs + AIDES</small>
   </footer>
 </body>
 </html>
