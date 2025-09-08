@@ -1,38 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DocuGod - Viral TikTok Ad</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="tiktok-container">
-    <!-- Audio (voiceover + background music) -->
-    <audio id="voiceTrack" src="assets/voice.mp3" preload="auto"></audio>
-    <audio id="musicTrack" src="assets/music.mp3" preload="auto" loop></audio>
-
-    <!-- Start Button -->
-    <button class="start-button" id="startBtn" onclick="startAd()">▶️</button>
-
-    <!-- Scenes -->
-    <div class="scene active" data-scene="1">
-      <div class="hook-text problem-text">STOP! ✋</div>
-      <div class="sub-text">Still paying $3,000+ for simple contracts?</div>
-      <div class="visual-container">💸💸💸</div>
+    <!-- Voice Upload Area -->
+    <div class="voice-upload">
+      <div class="voice-controls">
+        <button class="upload-btn" onclick="document.getElementById('audioFileInput').click()">
+          🎤 Upload Voice
+        </button>
+        <input type="file" id="audioFileInput" accept="audio/*" onchange="handleVoiceUpload(event)" />
+        <div class="voice-status" id="voiceStatus">No audio loaded</div>
+        <button class="upload-btn" id="playVoiceBtn" onclick="toggleCustomVoice()" style="display: none;">
+          ▶️ Play Voice
+        </button>
+      </div>
     </div>
 
+    <!-- Countdown Timer -->
+    <div class="countdown">⏰ Limited Time: 50% OFF!</div>
+
+    <!-- Trend Badge -->
+    <div class="trend-badge">🔥 VIRAL</div>
+
+    <!-- TikTok Side Icons -->
+    <div class="tiktok-hearts">
+      <div class="heart-icon" onclick="showPreorder()">❤️</div>
+      <div class="heart-icon">💬</div>
+      <div class="heart-icon">📤</div>
+      <div class="heart-icon">🎵</div>
+    </div>
+
+    <!-- Start Button -->
+    <button class="start-button" id="startBtn" onclick="startTikTok()">▶️</button>
+
+    <!-- Scene 1 -->
+    <div class="scene active" data-scene="1">
+      <div class="hook-text problem-text">STOP! ✋</div>
+      <div class="sub-text">Are you STILL paying lawyers $3,000+ for simple contracts?</div>
+      <div class="visual-container">
+        <div class="money-rain" style="left: 10%; animation-delay: 0s;">💸</div>
+        <div class="money-rain" style="left: 30%; animation-delay: 0.5s;">💸</div>
+        <div class="money-rain" style="left: 50%; animation-delay: 1s;">💸</div>
+        <div class="money-rain" style="left: 70%; animation-delay: 1.5s;">💸</div>
+        <div class="money-rain" style="left: 90%; animation-delay: 0.3s;">💸</div>
+      </div>
+    </div>
+
+    <!-- Scene 2 -->
     <div class="scene" data-scene="2">
       <div class="hook-text solution-text">Meet DocuGod ⚡</div>
       <div class="sub-text">Upload ANY document in 3 seconds</div>
-      <div class="visual-container">📁 ➡️ ☁️</div>
+      <div class="visual-container">
+        <div class="upload-demo">📁 ➡️ ☁️</div>
+      </div>
     </div>
 
+    <!-- Scene 3 -->
     <div class="scene" data-scene="3">
       <div class="hook-text feature-text">AI Magic ✨</div>
       <div class="sub-text">Edit, redact, and redline like a PRO</div>
-      <div class="visual-container">🪄</div>
+      <div class="visual-container">
+        <div class="magic-wand">🪄</div>
+      </div>
     </div>
 
+    <!-- Scene 4 -->
     <div class="scene" data-scene="4">
-      <
+      <div class="hook-text">INSTANT Results ⚡</div>
+      <div class="sub-text">Export to PDF, Word, anything!</div>
+      <div class="visual-container">
+        <div class="speed-lines"></div>
+        <div class="explosion"></div>
+        <div style="font-size: 80px; z-index: 10;">💨📄</div>
+      </div>
+    </div>
+
+    <!-- Scene 5 -->
+    <div class="scene" data-scene="5">
+      <div class="hook-text cta-text">DocuGod</div>
+      <div class="sub-text">50% OFF Preorder!</div>
+      <div class="typing-text" id="typingText"></div>
+      <div class="visual-container">
+        <div style="font-size: 80px;" onclick="showPreorder()">🛒</div>
+        <div style="font-size: 60px; margin-top: 10px;">👆 TAP TO PREORDER</div>
+      </div>
+    </div>
+
+    <!-- Preorder Modal -->
+    <div class="preorder-modal" id="preorderModal">
+      <div class="preorder-content">
+        <div class="preorder-title">🚀 DocuGod Preorder</div>
+        <div class="preorder-price"><span class="price-strike">$99</span><span style="color:#25f4ee;">$49</span></div>
+        <div class="preorder-features">
+          <div class="feature-item">✅ AI Document Editor</div>
+          <div class="feature-item">✅ Unlimited Uploads</div>
+          <div class="feature-item">✅ Professional Templates</div>
+          <div class="feature-item">✅ Export to Any Format</div>
+          <div class="feature-item">✅ Lifetime Updates</div>
+          <div class="feature-item">🎁 Early Access Bonus</div>
+        </div>
+        <button class="preorder-btn" onclick="processPreorder()">💳 PREORDER NOW - $49</button>
+        <div style="font-size: 12px; color: #666; margin: 10px 0;">⚡ Limited Time: Only 100 spots left!</div>
+        <button class="close-btn" onclick="closePreorder()">Maybe Later</button>
+      </div>
+    </div>
+
+    <!-- Caption Overlay -->
+    <div class="caption-overlay">
+      <div id="captionText">This AI tool will save you THOUSANDS! 💰</div>
+      <div class="hashtags">#DocuGod #AItools #entrepreneur #businesshack #viral</div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+      <button class="control-btn" onclick="togglePlay()">⏸️</button>
+      <button class="control-btn" onclick="nextScene()">⏭️</button>
+    </div>
+  </div>
+
+  <!-- 🎵 Audio Files -->
+  <audio id="bgMusic" src="assets/Soul-Long-Version-(chosic.com).mp3" preload="auto" loop></audio>
+  <audio id="voiceOver" src="assets/ElevenLabs_2025-09-07T11_35_16_Brian_pre_sp100_s50_sb75_se0_b_m2.mp3" preload="auto"></audio>
+
+  <script>
+    let currentScene = 1;
+    let isPlaying = false;
+    let sceneInterval;
+    let customAudio = null;
+    let isCustomVoicePlaying = false;
+
+    const bgMusic = document.getElementById('bgMusic');
+    const voiceOver = document.getElementById('voiceOver');
+
+    function startTikTok() {
+      document.getElementById('startBtn').classList.add('hidden');
+      isPlaying = true;
+
+      bgMusic.volume = 0.4;
+      bgMusic.play();
+
+      voiceOver.play();
+
+      startAutoPlay();
+    }
+
+    function startAutoPlay() {
+      sceneInterval = setInterval(() => {
+        nextScene();
+      }, 2500);
+    }
+
+    function nextScene() {
+      document.querySelector('.scene.active').classList.remove('active');
+      currentScene = currentScene >= 5 ? 1 : currentScene + 1;
+      document.querySelector(`[data-scene="${currentScene}"]`).classList.add('active');
+    }
+
+    function togglePlay() {
+      isPlaying = !isPlaying;
+      if (isPlaying) startAutoPlay();
+      else clearInterval(sceneInterval);
+    }
+
+    function showPreorder() {
+      document.getElementById('preorderModal').style.display = 'flex';
+    }
+    function closePreorder() {
+      document.getElementById('preorderModal').style.display = 'none';
+    }
+    function processPreorder() {
+      alert('🎉 Preorder Successful!');
+      closePreorder();
+    }
+  </script>
+</body>
+</html>
