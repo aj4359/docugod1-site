@@ -2,32 +2,37 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>DocuGod — AI Document Editor</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <header class="topbar">
-    <div class="brand">
-      <span class="logo-mark">✒️</span>
-      <span class="logo">DocuGod</span>
+  <header class="site-header">
+    <div class="wrap">
+      <h1 class="brand">DocuGod</h1>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="ad.html" class="pill pill-accent">🎬 Watch Our Ad</a>
+      </nav>
     </div>
-    <nav class="nav">
-      <a href="index.html" class="nav-link active">Home</a>
-      <a href="pricing.html" class="btn cta">Pricing</a>
-    </nav>
   </header>
 
-  <main class="container hero">
-    <h1 class="hero-title">AI-powered document editor</h1>
-    <p class="hero-subtitle">Redact, sign, and export — in seconds.</p>
-    <div class="hero-actions">
-      <a class="btn cta-lg" href="pricing.html">See Pricing & Get Started →</a>
-    </div>
+  <main class="wrap">
+    <section class="hero">
+      <h2>AI-powered document editor: redact, sign, export instantly</h2>
+      <p class="lead">
+        Upload any PDF, hide sensitive text, add signatures (coming soon), and export in seconds.
+      </p>
+      <div class="cta-buttons">
+        <a class="btn" href="pricing.html">💳 View Pricing</a>
+        <a class="btn btn-accent" href="ad.html">🎬 Watch Our Ad</a>
+      </div>
+    </section>
 
     <section class="features">
-      <h2>Features</h2>
-      <ul class="feature-list">
+      <h3>Features</h3>
+      <ul>
         <li>Upload any PDF file</li>
         <li>Redact sensitive information</li>
         <li>Add a signature (coming soon)</li>
@@ -36,8 +41,8 @@
     </section>
   </main>
 
-  <footer class="foot">
-    <small>© 2025 TA GuruLabs + AIDES • For documents you own. Passports/visas: redaction only.</small>
+  <footer class="site-footer">
+    <div class="wrap">© 2025 TA GuruLabs + AIDES</div>
   </footer>
 </body>
 </html>
