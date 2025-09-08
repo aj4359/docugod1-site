@@ -1,24 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>DocuGod — AI Document Editor</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <h1>DocuGod</h1>
-    <p>AI-powered document editor: redact, sign, export instantly</p>
-    <nav>
-      <a href="pricing.html">Pricing</a>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo-mark">✒️</span>
+      <span class="logo">DocuGod</span>
+    </div>
+    <nav class="nav">
+      <a href="index.html" class="nav-link active">Home</a>
+      <a href="pricing.html" class="btn cta">Pricing</a>
     </nav>
   </header>
 
-  <main>
-    <section>
+  <main class="container hero">
+    <h1 class="hero-title">AI-powered document editor</h1>
+    <p class="hero-subtitle">Redact, sign, and export — in seconds.</p>
+    <div class="hero-actions">
+      <a class="btn cta-lg" href="pricing.html">See Pricing & Get Started →</a>
+    </div>
+
+    <section class="features">
       <h2>Features</h2>
-      <ul>
+      <ul class="feature-list">
         <li>Upload any PDF file</li>
         <li>Redact sensitive information</li>
         <li>Add a signature (coming soon)</li>
@@ -27,8 +36,8 @@
     </section>
   </main>
 
-  <footer>
-    <p>© 2025 TA GuruLabs + AIDES</p>
+  <footer class="foot">
+    <small>© 2025 TA GuruLabs + AIDES • For documents you own. Passports/visas: redaction only.</small>
   </footer>
 </body>
 </html>
