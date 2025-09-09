@@ -1,57 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DocuGod - AI Document Editor</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DocuGod — AI Document Editor</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <header>
-    <h1>📄 DocuGod</h1>
-    <p>The Guru-level AI document editor that works on ANY file.</p>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="pricing.html">Pricing</a></li>
-        <li><a href="ad.html">Watch Ad</a></li>
-        <li><a href="redact.html">Redact Demo</a></li>
-      </ul>
-    </nav>
+<body class="page">
+  <header class="site-header">
+    <div class="container row between center">
+      <a href="/" class="logo">DocuGod</a>
+      <nav class="nav">
+        <a href="ad.html">Watch Ad</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="redact.html">Redact Demo</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <section>
-      <h2>What is DocuGod?</h2>
-      <p>
-        DocuGod lets you upload PDFs, Word docs, even scanned images —
-        and instantly edit, redact, or generate new text with AI.
-      </p>
-    </section>
-
-    <section>
-      <h2>🚀 Key Features</h2>
-      <ul>
-        <li>Advanced OCR for scanned docs and bank statements</li>
-        <li>AI-powered editing, redaction, and autocomplete</li>
-        <li>Exports to PDF, Word, TXT</li>
-        <li>Bank-grade security & encryption (coming soon)</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>🔥 Start Here</h2>
-      <p>Choose where you want to go:</p>
-      <div class="cta-buttons">
-        <a class="btn" href="pricing.html">View Pricing</a>
-        <a class="btn" href="ad.html">Watch Viral Ad</a>
-        <a class="btn" href="redact.html">Try Redaction Demo</a>
+  <main class="container hero">
+    <div class="hero-copy">
+      <h1>Edit any document. Fast.</h1>
+      <p>AI-powered editing, redaction, and export for PDFs, Word, and scans. Your docs, your control.</p>
+      <div class="ctas">
+        <a class="btn primary" href="pricing.html">See Pricing</a>
+        <a class="btn ghost" href="ad.html">▶ Watch 30-sec Ad</a>
       </div>
-    </section>
+      <ul class="bullets">
+        <li>Top-tier OCR (Tesseract + preprocessing)</li>
+        <li>Redaction & export in a click</li>
+        <li>Bank-grade safeguards; no fraud</li>
+      </ul>
+    </div>
+    <div class="hero-card">
+      <div class="card">
+        <div class="card-title">Try the redaction canvas</div>
+        <p>Draw black boxes and export a redacted PDF.</p>
+        <a class="btn" href="redact.html">Open Redaction Demo</a>
+      </div>
+    </div>
   </main>
 
-  <footer>
-    <p>© 2025 DocuGod — Built by TA GuruLabs</p>
+  <footer class="site-footer">
+    <div class="container row between center">
+      <small>© <span id="year"></span> DocuGod</small>
+      <a href="pricing.html" class="link">Buy now</a>
+    </div>
   </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
