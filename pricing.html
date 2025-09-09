@@ -2,96 +2,55 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DocuGod - AI Document Editing</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DocuGod – Pricing</title>
   <link rel="stylesheet" href="style.css" />
-  <style>
-    body {
-      background: #0a0a0a;
-      color: #fff;
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      padding: 20px;
-      text-align: center;
-      background: linear-gradient(90deg, #ff0050, #25f4ee);
-      font-weight: 800;
-      font-size: 26px;
-      color: #fff;
-    }
-
-    .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 80px 20px;
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-size: 38px;
-      font-weight: 900;
-      margin-bottom: 20px;
-      color: #25f4ee;
-    }
-
-    .hero p {
-      font-size: 18px;
-      max-width: 600px;
-      margin-bottom: 30px;
-      line-height: 1.5;
-    }
-
-    .cta-buttons {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .btn {
-      padding: 15px 30px;
-      font-size: 18px;
-      font-weight: 700;
-      border-radius: 25px;
-      text-decoration: none;
-      color: #fff;
-      background: linear-gradient(45deg, #ff0050, #25f4ee);
-      transition: background 0.3s ease, transform 0.2s ease;
-    }
-
-    .btn:hover {
-      background: linear-gradient(45deg, #25f4ee, #ff0050);
-      transform: scale(1.05);
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-      color: #666;
-    }
-  </style>
 </head>
 <body>
-  <header>DocuGod</header>
+  <header class="container">
+    <h1>Choose your plan</h1>
+    <p class="lead">Start with the essentials, scale to business.</p>
+    <p><a class="link" href="index.html">← Back to Home</a></p>
+  </header>
 
-  <section class="hero">
-    <h1>AI Document Editing Made Simple ⚡</h1>
-    <p>
-      Upload, edit, redact, and export any document in seconds.  
-      Save thousands on legal fees with DocuGod.
-    </p>
-    <div class="cta-buttons">
-      <a href="pricing.html" class="btn">💳 View Pricing</a>
-      <a href="ad.html" class="btn">▶️ Watch Ad</a>
-    </div>
-  </section>
+  <main class="container pricing-grid">
+    <article class="card">
+      <h2>Free</h2>
+      <p class="muted">Try DocuGod with basic features.</p>
+      <ul class="bullets">
+        <li>Preview editor & redaction demo</li>
+        <li>Sample templates</li>
+        <li>Email onboarding guide</li>
+      </ul>
+      <a class="btn btn-primary" href="YOUR_PAYHIP_FREE_LINK">Get Free</a>
+    </article>
 
-  <footer>© 2025 TA GuruLabs — All Rights Reserved</footer>
+    <article class="card highlight">
+      <div class="badge">Popular</div>
+      <h2>Pro</h2>
+      <p class="muted">Full editor for creators & teams of one.</p>
+      <ul class="bullets">
+        <li>Full redaction + export to PDF</li>
+        <li>Unlimited uploads</li>
+        <li>AI rewrite & smart suggestions</li>
+      </ul>
+      <a class="btn btn-primary" href="YOUR_PAYHIP_PRO_LINK">Buy Pro</a>
+    </article>
+
+    <article class="card">
+      <h2>Business</h2>
+      <p class="muted">For teams that need more control.</p>
+      <ul class="bullets">
+        <li>Everything in Pro</li>
+        <li>Team seats, roles & logs</li>
+        <li>Priority support</li>
+      </ul>
+      <a class="btn btn-primary" href="YOUR_PAYHIP_BUSINESS_LINK">Buy Business</a>
+    </article>
+  </main>
+
+  <footer class="container footer">
+    <small>Questions? Email hello@yourdomain</small>
+  </footer>
 </body>
 </html>
