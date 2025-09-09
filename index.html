@@ -1,55 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>DocuGod — AI Document Editor</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DocuGod - AI Document Editor</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="page">
-  <header class="site-header">
-    <div class="container row between center">
-      <a href="/" class="logo">DocuGod</a>
-      <nav class="nav">
-        <a href="ad.html">Watch Ad</a>
-        <a href="pricing.html">Pricing</a>
-        <a href="redact.html">Redact Demo</a>
-      </nav>
-    </div>
+<body>
+  <header>
+    <h1>📄 DocuGod</h1>
+    <p>Edit, redact, and transform your documents with AI</p>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="ad.html">Watch Ad</a> <!-- 👈 new link here -->
+    </nav>
   </header>
 
-  <main class="container hero">
-    <div class="hero-copy">
-      <h1>Edit any document. Fast.</h1>
-      <p>AI-powered editing, redaction, and export for PDFs, Word, and scans. Your docs, your control.</p>
-      <div class="ctas">
-        <a class="btn primary" href="pricing.html">See Pricing</a>
-        <a class="btn ghost" href="ad.html">▶ Watch 30-sec Ad</a>
-      </div>
-      <ul class="bullets">
-        <li>Top-tier OCR (Tesseract + preprocessing)</li>
-        <li>Redaction & export in a click</li>
-        <li>Bank-grade safeguards; no fraud</li>
+  <main>
+    <section>
+      <h2>Why DocuGod?</h2>
+      <p>
+        Stop wasting thousands on manual edits and lawyers.  
+        Upload any document, and DocuGod handles editing, redlining, and exporting—instantly.
+      </p>
+    </section>
+
+    <section>
+      <h2>Features</h2>
+      <ul>
+        <li>✅ AI-powered redaction & editing</li>
+        <li>✅ Export to PDF, Word, TXT</li>
+        <li>✅ Secure cloud storage</li>
+        <li>✅ Works on desktop & mobile</li>
       </ul>
-    </div>
-    <div class="hero-card">
-      <div class="card">
-        <div class="card-title">Try the redaction canvas</div>
-        <p>Draw black boxes and export a redacted PDF.</p>
-        <a class="btn" href="redact.html">Open Redaction Demo</a>
-      </div>
-    </div>
+    </section>
+
+    <section>
+      <h2>Get Started</h2>
+      <p>Choose the plan that works best for you.</p>
+      <a href="pricing.html" class="cta-btn">View Pricing</a>
+    </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container row between center">
-      <small>© <span id="year"></span> DocuGod</small>
-      <a href="pricing.html" class="link">Buy now</a>
-    </div>
+  <footer>
+    <p>&copy; 2025 DocuGod. Built with ❤️ by TA GuruLabs.</p>
   </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
