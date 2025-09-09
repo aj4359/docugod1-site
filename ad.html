@@ -2,230 +2,59 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>DocuGod — Viral Ad</title>
-  <link rel="preload" as="audio" href="assets/voice.mp3">
-  <link rel="preload" as="audio" href="assets/music.mp3">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DocuGod – 30s Ad</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
-    /* —— Base & Theme (matches site) —— */
-    :root {
-      --grad: linear-gradient(135deg, #ff0050, #25f4ee);
-      --bg: #0a0a0a;
-      --panel: #111;
-      --text: #f5f5f5;
-      --accent: #25f4ee;
-      --muted: #999;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      display: grid;
-      grid-template-rows: auto 1fr auto;
-    }
-    header {
-      text-align: center;
-      padding: 1.25rem 1rem;
-      background: var(--grad);
-      color: #fff;
-    }
-    header h1 { font-size: 1.8rem; margin-bottom: 0.25rem; }
-    header p { font-size: .95rem; opacity: .95; }
-    nav {
-      margin-top: .9rem;
-    }
-    nav a {
-      color: #fff; text-decoration: none;
-      margin: 0 .8rem; font-weight: 600;
-    }
-    nav a:hover { color: #ffd700; }
-
-    /* —— Ad Frame (TikTok style) —— */
-    .frame-wrap {
-      display: grid;
-      place-items: center;
-      padding: 1.25rem;
-    }
-    .frame {
-      width: 375px; height: 667px;
-      background: var(--panel);
-      border: 2px solid var(--accent);
-      border-radius: 20px;
-      overflow: hidden; position: relative;
-      box-shadow: 0 0 18px rgba(37,244,238,.35);
-    }
-
-    /* —— Scenes —— */
-    .scene {
-      position: absolute; inset: 0;
-      padding: 42px 20px 72px;
-      display: grid; place-items: center;
-      text-align: center;
-      opacity: 0; transform: scale(.94);
-      transition: opacity .35s ease, transform .35s ease;
-    }
-    .scene.active { opacity: 1; transform: scale(1); }
-    .headline {
-      font-size: 26px; font-weight: 900; line-height: 1.2;
-      text-shadow: 0 2px 12px rgba(0,0,0,.5);
-    }
-    .headline.problem { color: #ff0050; }
-    .headline.solution { color: var(--accent); }
-    .sub {
-      margin-top: 10px; font-weight: 600; opacity: .9;
-    }
-
-    /* fun visuals */
-    .visual {
-      width: 300px; height: 200px; margin-top: 18px;
-      border-radius: 16px; border: 2px dashed rgba(255,255,255,.12);
-      display: grid; place-items: center;
-      background: rgba(255,255,255,.03);
-      position: relative; overflow: hidden;
-    }
-    .money { position: absolute; font-size: 30px; animation: fall 2s linear infinite; }
-    @keyframes fall {
-      from { transform: translateY(-60px) rotate(0); opacity: 1; }
-      to   { transform: translateY(260px) rotate(360deg); opacity: 0; }
-    }
-    .wand { font-size: 80px; animation: spin 2s linear infinite; }
-    @keyframes spin {
-      0% { transform: rotate(0) scale(1); }
-      50% { transform: rotate(180deg) scale(1.08); }
-      100% { transform: rotate(360deg) scale(1); }
-    }
-    .speed {
-      position: absolute; inset: 0;
-      background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(37,244,238,.25) 10px, rgba(37,244,238,.25) 12px);
-      animation: move .55s linear infinite;
-    }
-    @keyframes move { from { transform: translateX(-18px); } to { transform: translateX(18px); } }
-
-    /* —— Start Button —— */
-    .start {
-      position: absolute; inset: 0;
-      display: grid; place-items: center; background: rgba(0,0,0,.4);
-      backdrop-filter: blur(2px);
-    }
-    .start button {
-      width: 86px; height: 86px; border-radius: 50%;
-      border: none; cursor: pointer; color: #fff; font-size: 30px; font-weight: 800;
-      background: var(--grad);
-      box-shadow: 0 0 16px rgba(255,255,255,.18);
-      animation: pulse 1.6s ease-in-out infinite;
-    }
-    @keyframes pulse { 0%,100%{transform: scale(1)} 50%{transform: scale(1.08)} }
-    .start.hide { display: none; }
-
-    /* —— Caption —— */
-    .caption {
-      position: absolute; left: 18px; right: 18px; bottom: 22px;
-      font-size: 15px; font-weight: 700; text-shadow: 0 1px 10px rgba(0,0,0,.6);
-    }
-    .badge {
-      position: absolute; top: 14px; left: 14px;
-      padding: 7px 12px; border-radius: 999px; font-size: 12px; font-weight: 800;
-      color: #fff; background: var(--grad);
-      box-shadow: 0 0 10px rgba(37,244,238,.3);
-    }
-
-    /* —— Footer —— */
-    footer {
-      text-align: center; color: var(--muted);
-      padding: 1.2rem .8rem; font-size: .86rem;
-      background: #111; border-top: 1px solid #151515;
-    }
-
-    /* responsive helper */
-    @media (max-width: 420px) {
-      .frame { transform: scale(.96); }
-    }
+    .tiktok-container{width:375px;height:667px;background:#000;margin:0 auto;position:relative;overflow:hidden;border-radius:16px;border:1px solid #222}
+    .scene{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;padding:32px;text-align:center}
+    .scene.active{display:flex}
+    .scene h1{font-size:32px;margin:.1rem 0}
+    .scene p{opacity:.9}
+    #startBtn{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:84px;height:84px;border-radius:50%;
+      border:none;cursor:pointer;font-size:28px;color:#000;font-weight:800;background:linear-gradient(135deg,#25f4ee,#ff0050)}
+    .corner-links{position:absolute;left:12px;top:12px;display:flex;gap:8px}
+    .corner-links a{font-size:12px;opacity:.9}
   </style>
 </head>
 <body>
-  <header>
-    <h1>📄 DocuGod</h1>
-    <p>Edit, redact & transform your documents with AI</p>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="ad.html">Watch Ad</a>
-    </nav>
-  </header>
+  <div class="tiktok-container" role="region" aria-label="DocuGod 30 second advert">
 
-  <main class="frame-wrap">
-    <div class="frame" id="frame">
-      <div class="badge">Viral Demo</div>
-
-      <!-- Start Overlay -->
-      <div class="start" id="start">
-        <button id="startBtn" aria-label="Start Ad">▶️</button>
-      </div>
-
-      <!-- Scene 1 -->
-      <section class="scene active" data-scene="1">
-        <div>
-          <div class="headline problem">STOP ✋ wasting £££ on simple docs</div>
-          <div class="sub">Most people overspend for basic edits.</div>
-          <div class="visual">
-            <div class="money" style="left:10%; animation-delay:0s">💸</div>
-            <div class="money" style="left:30%; animation-delay:.3s">💸</div>
-            <div class="money" style="left:55%; animation-delay:.6s">💸</div>
-            <div class="money" style="left:75%; animation-delay:.9s">💸</div>
-            <div class="money" style="left:88%; animation-delay:.12s">💸</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Scene 2 -->
-      <section class="scene" data-scene="2">
-        <div>
-          <div class="headline solution">Meet DocuGod ⚡</div>
-          <div class="sub">Upload ANY document in seconds</div>
-          <div class="visual" style="font-size:62px; font-weight:900;">📁 ➜ ☁️</div>
-        </div>
-      </section>
-
-      <!-- Scene 3 -->
-      <section class="scene" data-scene="3">
-        <div>
-          <div class="headline">AI Magic ✨</div>
-          <div class="sub">Edit • Redact • Redline — instantly</div>
-          <div class="visual"><div class="wand">🪄</div></div>
-        </div>
-      </section>
-
-      <!-- Scene 4 -->
-      <section class="scene" data-scene="4">
-        <div>
-          <div class="headline">Export in seconds ⚡</div>
-          <div class="sub">PDF • Word • TXT</div>
-          <div class="visual"><div class="speed"></div><div style="font-size:74px; z-index:1;">💨📄</div></div>
-        </div>
-      </section>
-
-      <!-- Scene 5 -->
-      <section class="scene" data-scene="5">
-        <div>
-          <div class="headline" style="color:#fff;">DocuGod</div>
-          <div class="sub">Try the demo on the homepage</div>
-          <div class="visual" style="font-size:70px;">🛒</div>
-        </div>
-      </section>
-
-      <!-- Caption -->
-      <div class="caption" id="captionText">This AI tool will save you HOURS every week.</div>
+    <div class="corner-links">
+      <a class="link" href="index.html">Home</a>
+      <a class="link" href="pricing.html">Pricing</a>
     </div>
-  </main>
 
-  <footer>
-    &copy; 2025 DocuGod — TA GuruLabs
-  </footer>
+    <div class="scene active" data-scene="1">
+      <h1>STOP! ✋</h1>
+      <p>Still paying big money for simple documents?</p>
+    </div>
+
+    <div class="scene" data-scene="2">
+      <h1>Meet DocuGod ⚡</h1>
+      <p>Upload any doc. Edit. Redact. Export.</p>
+    </div>
+
+    <div class="scene" data-scene="3">
+      <h1>AI Magic ✨</h1>
+      <p>Smart rewrites and instant redaction.</p>
+    </div>
+
+    <div class="scene" data-scene="4">
+      <h1>Fast Results ⚡</h1>
+      <p>Export clean PDFs in seconds.</p>
+    </div>
+
+    <div class="scene" data-scene="5">
+      <h1>DocuGod</h1>
+      <p>Ready when you are. Try it today.</p>
+    </div>
+
+    <button id="startBtn" aria-label="Play ad">▶️</button>
+  </div>
 
   <script>
-    // —— Audio (uses your repo assets) ——
+    // ======= AUDIO SOURCES (place files in /assets) =======
     const VOICE_SRC = 'assets/voice.mp3';
     const MUSIC_SRC = 'assets/music.mp3';
 
@@ -233,68 +62,40 @@
     const music = new Audio(MUSIC_SRC);
     music.loop = true;
     music.volume = 0.35;
-    voice.volume = 1.0;
-
-    // surface load issues in console
-    voice.addEventListener('error', () => console.log('VOICE load error:', voice.error));
-    music.addEventListener('error', () => console.log('MUSIC load error:', music.error));
-
-    // —— Scenes ——
-    const captions = {
-      1: "This AI tool will save you HOURS every week.",
-      2: "Just drag & drop your file.",
-      3: "AI does the heavy lifting.",
-      4: "Export in seconds, not hours.",
-      5: "See pricing & details on the homepage."
-    };
 
     let currentScene = 1;
     let timer = null;
 
-    // iOS/Android gesture unlock helper
-    async function safePlay(a){
-      try {
-        a.muted = false;
-        a.currentTime = 0;
-        await a.play();
-        return true;
-      } catch(e) {
-        console.log('play() blocked:', e?.message || e);
-        return false;
-      }
-    }
-
     function showScene(n){
       document.querySelector('.scene.active')?.classList.remove('active');
       document.querySelector(`[data-scene="${n}"]`)?.classList.add('active');
-      document.getElementById('captionText').textContent = captions[n] || '';
     }
 
-    function startCarousel(){
-      if (timer) clearInterval(timer);
-      timer = setInterval(() => {
-        currentScene = currentScene >= 5 ? 1 : currentScene + 1;
-        showScene(currentScene);
-      }, 2800);
+    async function safePlay(a){
+      try { a.muted = false; a.currentTime = 0; await a.play(); return true; }
+      catch(e){ console.log('play error', e); return false; }
     }
 
-    document.getElementById('startBtn').addEventListener('click', async () => {
-      // try to start both audio tracks after user gesture
+    async function startAd(){
+      document.getElementById('startBtn').style.display='none';
+
+      // iOS requires gesture to start audio
       const v = await safePlay(voice);
       const m = await safePlay(music);
-      if (!v && !m) {
-        alert('If audio is muted, tap again. On iPhone, switch off Silent Mode.');
+      if(!v && !m){
+        alert('If sound is off, toggle Silent Mode / turn volume up and tap ▶️ again.');
+        document.getElementById('startBtn').style.display='block';
+        return;
       }
-      document.getElementById('start').classList.add('hide');
-      startCarousel();
-    });
 
-    // Expose minimal controls if needed later
-    window.docugodAd = {
-      next: () => { currentScene = currentScene >= 5 ? 1 : currentScene + 1; showScene(currentScene); },
-      pause: () => { clearInterval(timer); voice.pause(); music.pause(); },
-      play:  () => { safePlay(voice); safePlay(music); startCarousel(); }
-    };
+      // cycle scenes every 2.5s
+      timer = setInterval(()=>{
+        currentScene = currentScene >= 5 ? 1 : currentScene + 1;
+        showScene(currentScene);
+      }, 2500);
+    }
+
+    document.getElementById('startBtn').addEventListener('click', startAd);
   </script>
 </body>
 </html>
