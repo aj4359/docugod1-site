@@ -1,150 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>DocuGod — 30-sec Ad</title>
-<link rel="stylesheet" href="style.css"/>
-<style>
-  /* Minimal ad styles (kept compact) */
-  .stage{width:375px;height:667px;margin:40px auto;background:#000;position:relative;overflow:hidden;border-radius:18px;border:1px solid #222}
-  .scene{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transform:scale(.96);transition:.35s ease}
-  .scene.active{opacity:1;transform:scale(1)}
-  .hook{color:#fff;font:900 28px/1.15 Poppins,system-ui,sans-serif;text-align:center;text-shadow:2px 2px 0 #ff0050;margin:0 18px 10px}
-  .sub{color:#ddd;font:600 16px/1.3 Poppins,system-ui,sans-serif;text-align:center;margin:0 22px}
-  .spark{position:absolute;font-size:22px;animation:s1 1.4s ease-out forwards}
-  @keyframes s1{0%{opacity:0;transform:scale(.4) translateY(30px)}60%{opacity:1}100%{opacity:0;transform:scale(1.8) translateY(-30px)}}
-  .controls{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:10px}
-  .ctrl{width:46px;height:46px;border-radius:50%;border:none;background:rgba(255,255,255,.2);color:#fff;font-size:18px;backdrop-filter:blur(10px);cursor:pointer}
-  .start{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
-  .start button{width:88px;height:88px;border-radius:50%;border:none;background:linear-gradient(45deg,#ff0050,#25f4ee);color:#fff;font-size:34px;cursor:pointer;box-shadow:0 0 24px rgba(37,244,238,.35)}
-  .badge{position:absolute;top:12px;left:12px;background:linear-gradient(45deg,#ff0050,#ff6b35);color:#fff;padding:6px 12px;border-radius:16px;font:700 12px Poppins}
-  .caption{position:absolute;bottom:80px;left:14px;right:14px;color:#fff;font:700 15px Poppins;text-shadow:1px 1px 2px rgba(0,0,0,.7);text-align:left}
-  .cta-row{position:absolute;bottom:54px;left:0;right:0;display:flex;justify-content:center;gap:10px}
-  .cta{background:linear-gradient(45deg,#25f4ee,#14ff88);color:#000;font:900 14px Poppins;border:none;border-radius:18px;padding:10px 14px;cursor:pointer}
-  .ghost{background:transparent;border:1px solid #25f4ee;color:#25f4ee}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DocuGod - Viral Ad</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      width: 375px;
+      height: 667px;
+      background: #111;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid #25f4ee;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(37,244,238,0.6);
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      color: #25f4ee;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    .scene {
+      display: none;
+      font-size: 20px;
+      margin-top: 40px;
+    }
+    .scene.active {
+      display: block;
+      animation: fadeIn 0.6s ease-in;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    #startBtn {
+      background: linear-gradient(45deg, #ff0050, #25f4ee);
+      border: none;
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      font-size: 30px;
+      color: #fff;
+      cursor: pointer;
+      margin-top: 40px;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+    .caption {
+      position: absolute;
+      bottom: 40px;
+      left: 20px;
+      right: 20px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+    }
+  </style>
 </head>
-<body class="page dark">
-  <div class="stage" role="region" aria-label="DocuGod 30-second advertisement">
+<body>
+  <div class="container">
+    <h1>DocuGod</h1>
 
-    <div class="badge">NEW</div>
+    <div id="scene1" class="scene active">STOP ✋ Spending $3,000+ on contracts!</div>
+    <div id="scene2" class="scene">Meet DocuGod ⚡ Upload ANY document in seconds</div>
+    <div id="scene3" class="scene">AI Magic ✨ Edit, redact, redline instantly</div>
+    <div id="scene4" class="scene">Export to PDF, Word, ANY format 🚀</div>
+    <div id="scene5" class="scene">Tap to Preorder 👆</div>
 
-    <!-- Scenes -->
-    <section class="scene active" data-scene="1">
-      <h2 class="hook">Edit any document. Fast.</h2>
-      <p class="sub">Upload. Edit. Redact. Export. Your docs, your control.</p>
-    </section>
+    <button id="startBtn">▶️</button>
 
-    <section class="scene" data-scene="2">
-      <h2 class="hook" style="text-shadow:2px 2px 0 #25f4ee">Powerful OCR</h2>
-      <p class="sub">Scans become clean, editable text.</p>
-    </section>
-
-    <section class="scene" data-scene="3">
-      <h2 class="hook">One-click Redaction</h2>
-      <p class="sub">Black out sensitive fields. Export in seconds.</p>
-    </section>
-
-    <section class="scene" data-scene="4">
-      <h2 class="hook">Ship-ready PDFs</h2>
-      <p class="sub">Keep layout crisp across PDF/Word/images.</p>
-    </section>
-
-    <section class="scene" data-scene="5">
-      <h2 class="hook">Try DocuGod</h2>
-      <p class="sub">See pricing & start today.</p>
-    </section>
-
-    <!-- Caption -->
-    <div class="caption" id="cap">This AI tool will save you hours.</div>
-
-    <!-- Start overlay -->
-    <div class="start" id="start">
-      <button id="startBtn" aria-label="Start video">▶</button>
-    </div>
-
-    <!-- Controls -->
-    <div class="controls">
-      <button class="ctrl" id="pauseBtn" aria-label="Pause/Play">⏸️</button>
-      <button class="ctrl" id="nextBtn" aria-label="Next">⏭️</button>
-      <a class="cta" href="pricing.html" aria-label="Go to pricing">See Pricing</a>
-      <a class="cta ghost" href="index.html" aria-label="Back home">Home</a>
+    <div class="caption" id="captionText">
+      This AI tool will save you THOUSANDS 💰
     </div>
   </div>
 
-<script>
-  // ===== audio paths (make sure these files exist in /assets) =====
-  const VOICE = new Audio('assets/voice.mp3');  // your ElevenLabs
-  const MUSIC = new Audio('assets/music.mp3');  // your Soul track
-  MUSIC.loop = true; MUSIC.volume = 0.35;
+  <script>
+    // ====== AUDIO SOURCES ======
+    const VOICE_SRC = 'assets/voice.mp3';   // renamed Eleven Labs file
+    const MUSIC_SRC = 'assets/music.mp3';   // renamed Soul track
 
-  const captions = {
-    1: "This AI tool will save you hours.",
-    2: "Top-tier OCR turns scans into text.",
-    3: "Draw black boxes. Export redacted PDFs.",
-    4: "Layouts stay pixel-crisp on export.",
-    5: "Open pricing to get started today."
-  };
+    const voice = new Audio(VOICE_SRC);
+    const music = new Audio(MUSIC_SRC);
+    music.loop = true;
+    music.volume = 0.35;
+    voice.volume = 1.0;
 
-  let scene = 1, playing = false, timer = null;
+    let currentScene = 1;
+    let timer = null;
 
-  const scenes = () => document.querySelectorAll('.scene');
-  const cap = document.getElementById('cap');
-  const start = document.getElementById('start');
-  const startBtn = document.getElementById('startBtn');
-  const pauseBtn = document.getElementById('pauseBtn');
-  const nextBtn = document.getElementById('nextBtn');
+    const captions = {
+      1: "This AI tool will save you THOUSANDS 💰",
+      2: "Just drag and drop your file 📁",
+      3: "AI does ALL the work for you 🤖✨",
+      4: "Export in seconds, not hours ⚡",
+      5: "Preorder coming soon 🛒"
+    };
 
-  function show(s){
-    scenes().forEach(el => el.classList.remove('active'));
-    document.querySelector(`[data-scene="${s}"]`).classList.add('active');
-    cap.textContent = captions[s];
-    for(let i=0;i<8;i++){
-      const sp = document.createElement('div');
-      sp.className='spark'; sp.textContent='✨';
-      sp.style.left = (Math.random()*80+10)+'%';
-      sp.style.top  = (Math.random()*70+10)+'%';
-      document.querySelector('.stage').appendChild(sp);
-      setTimeout(()=>sp.remove(),1400);
+    document.getElementById('startBtn').addEventListener('click', async () => {
+      try {
+        await voice.play();
+        await music.play();
+      } catch (e) {
+        alert("Tap again to allow audio to play. iPhone: turn off Silent Mode.");
+      }
+      document.getElementById('startBtn').style.display = 'none';
+      startScenes();
+    });
+
+    function startScenes() {
+      timer = setInterval(() => {
+        document.querySelector(`#scene${currentScene}`).classList.remove('active');
+        currentScene = currentScene >= 5 ? 1 : currentScene + 1;
+        document.querySelector(`#scene${currentScene}`).classList.add('active');
+        document.getElementById('captionText').textContent = captions[currentScene];
+      }, 3000);
     }
-  }
-
-  function next(){
-    scene = scene>=5 ? 1 : scene+1;
-    show(scene);
-  }
-
-  function play(){
-    playing = true;
-    pauseBtn.textContent='⏸️';
-    if (VOICE.paused) VOICE.play().catch(()=>{});
-    if (MUSIC.paused) MUSIC.play().catch(()=>{});
-    if (timer) clearInterval(timer);
-    timer = setInterval(next, 2500);
-  }
-
-  function pause(){
-    playing = false;
-    pauseBtn.textContent='▶️';
-    VOICE.pause(); MUSIC.pause();
-    if (timer) clearInterval(timer);
-  }
-
-  async function kickOff(){
-    // required on iOS: user gesture before play
-    start.style.display='none';
-    try { await VOICE.play(); } catch(e){}
-    try { await MUSIC.play(); } catch(e){}
-    play();
-  }
-
-  startBtn.addEventListener('click', kickOff);
-  pauseBtn.addEventListener('click', ()=> playing ? pause() : play());
-  nextBtn.addEventListener('click', next);
-
-  // init first frame
-  show(1);
-</script>
+  </script>
 </body>
 </html>
