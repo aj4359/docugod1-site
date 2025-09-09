@@ -1,47 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DocuGod Pricing</title>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background: #0a0a0a;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      padding: 20px;
+      text-align: center;
+      background: linear-gradient(90deg, #ff0050, #25f4ee);
+      font-weight: 800;
+      font-size: 24px;
+      color: #fff;
+    }
+
+    .pricing-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 40px 20px;
+    }
+
+    .plan {
+      background: #1a1a1a;
+      border: 2px solid #25f4ee;
+      border-radius: 15px;
+      width: 300px;
+      text-align: center;
+      padding: 30px 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .plan:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(37, 244, 238, 0.5);
+    }
+
+    .plan-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #25f4ee;
+    }
+
+    .plan-price {
+      font-size: 32px;
+      font-weight: 900;
+      margin: 20px 0;
+    }
+
+    .plan-price.free {
+      color: #aaa;
+    }
+    .plan-price.pro {
+      color: #25f4ee;
+    }
+    .plan-price.business {
+      color: #ff0050;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+      text-align: left;
+    }
+
+    ul li {
+      margin: 10px 0;
+      font-size: 14px;
+    }
+
+    .buy-btn {
+      display: inline-block;
+      padding: 12px 20px;
+      background: linear-gradient(45deg, #ff0050, #25f4ee);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      border-radius: 25px;
+      transition: background 0.3s ease;
+    }
+
+    .buy-btn:hover {
+      background: linear-gradient(45deg, #25f4ee, #ff0050);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #666;
+    }
+  </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="wrap">
-      <h1 class="brand">DocuGod</h1>
-      <nav class="nav">
-        <a href="index.html">Home</a>
-        <a href="ad.html">Watch Ad</a>
-      </nav>
+  <header>DocuGod Pricing Plans</header>
+
+  <div class="pricing-container">
+    <!-- Free Plan -->
+    <div class="plan">
+      <div class="plan-title">Free</div>
+      <div class="plan-price free">$0</div>
+      <ul>
+        <li>✔️ Upload & edit up to 3 documents</li>
+        <li>✔️ Basic OCR & AI editing</li>
+        <li>✔️ Export to PDF</li>
+      </ul>
+      <a class="buy-btn" href="https://payhip.com/b/qCj2v" target="_blank">Get Started</a>
     </div>
-  </header>
 
-  <main class="wrap">
-    <h2>Pricing</h2>
-    <div class="pricing">
-      <div class="card">
-        <h3>Free</h3>
-        <p>Watermark enabled</p>
-        <a class="btn" href="https://payhip.com/b/Urc5P" target="_blank" rel="noopener">Get Free</a>
-      </div>
-
-      <div class="card">
-        <h3>Pro</h3>
-        <p>Watermark removed, AI Co-Pilot (coming soon)</p>
-        <a class="btn btn-accent" href="https://payhip.com/b/EtBob" target="_blank" rel="noopener">Buy Pro</a>
-      </div>
-
-      <div class="card">
-        <h3>Business</h3>
-        <p>Team seats + branding</p>
-        <a class="btn" href="https://payhip.com/b/D2t37" target="_blank" rel="noopener">Buy Business</a>
-      </div>
+    <!-- Pro Plan -->
+    <div class="plan">
+      <div class="plan-title">Pro</div>
+      <div class="plan-price pro">$49</div>
+      <ul>
+        <li>✔️ Unlimited uploads</li>
+        <li>✔️ Advanced OCR (PDF, Word, Images)</li>
+        <li>✔️ AI-powered editing & redaction</li>
+        <li>✔️ Export to any format</li>
+      </ul>
+      <a class="buy-btn" href="https://payhip.com/b/YY7xD" target="_blank">Preorder Now</a>
     </div>
-  </main>
 
-  <footer class="site-footer">
-    <div class="wrap">© 2025 TA GuruLabs + AIDES</div>
-  </footer>
+    <!-- Business Plan -->
+    <div class="plan">
+      <div class="plan-title">Business</div>
+      <div class="plan-price business">$99</div>
+      <ul>
+        <li>✔️ Everything in Pro</li>
+        <li>✔️ Team collaboration</li>
+        <li>✔️ Priority AI processing</li>
+        <li>✔️ Dedicated support</li>
+        <li>✔️ Lifetime updates</li>
+      </ul>
+      <a class="buy-btn" href="https://payhip.com/b/lIrHO" target="_blank">Preorder Now</a>
+    </div>
+  </div>
+
+  <footer>© 2025 TA GuruLabs — All Rights Reserved</footer>
 </body>
 </html>
