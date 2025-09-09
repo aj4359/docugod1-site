@@ -1,97 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DocuGod - Viral TikTok Ad</title>
-  <link rel="stylesheet" href="style.css"/>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap');
-
-    :root{
-      --pink:#ff0050; --aqua:#25f4ee; --ink:#0a0a0a; --fg:#fff;
-    }
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{background:#000;font-family:'Poppins',sans-serif;min-height:100vh;display:flex;align-items:center;justify-content:center}
-    .tiktok-container{width:375px;height:667px;background:#000;position:relative;overflow:hidden;border:1px solid #222;border-radius:20px}
-    .scene{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transform:scale(.8);transition:.4s ease;padding:40px 20px}
-    .scene.active{opacity:1;transform:scale(1)}
-    .hook-text{font-size:28px;font-weight:900;color:#fff;text-align:center;line-height:1.2;margin-bottom:20px;text-shadow:2px 2px 0 var(--pink);animation:textPop .6s ease-out}
-    .problem-text{color:var(--pink);font-size:32px;animation:shake .5s ease-in-out infinite alternate}
-    .solution-text{color:var(--aqua);font-size:30px;animation:glow 2s ease-in-out infinite alternate}
-    .feature-text{background:linear-gradient(45deg,var(--pink),var(--aqua));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-    .cta-text{color:var(--aqua);animation:pulse 1.5s ease-in-out infinite}
-    .sub-text{font-size:18px;font-weight:600;color:#fff;text-align:center;margin-bottom:30px;opacity:.9}
-    .visual-container{width:300px;height:200px;position:relative;margin:20px 0}
-    .money-rain{position:absolute;font-size:30px;animation:moneyFall 2s linear infinite}
-    .upload-demo{width:200px;height:120px;background:rgba(37,244,238,.1);border:3px dashed var(--aqua);border-radius:15px;display:flex;align-items:center;justify-content:center;font-size:60px;animation:uploadBounce 1s ease-in-out infinite}
-    .magic-wand{font-size:80px;animation:magicSpin 2s linear infinite}
-    .speed-lines{position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 10px,rgba(37,244,238,.3)10px,rgba(37,244,238,.3)12px);animation:speedMove .5s linear infinite}
-    .explosion{position:absolute;width:100px;height:100px;background:radial-gradient(circle,#fff,transparent);border-radius:50%;animation:explode .8s ease-out infinite}
-    .tiktok-hearts{position:absolute;right:20px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:20px}
-    .heart-icon{width:50px;height:50px;background:rgba(255,255,255,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;color:#fff;animation:heartPulse 2s ease-in-out infinite}
-    .caption-overlay{position:absolute;left:20px;right:80px;bottom:100px;color:#fff;font-size:16px;font-weight:600;line-height:1.3;text-shadow:1px 1px 2px rgba(0,0,0,.8)}
-    .hashtags{color:var(--aqua);margin-top:10px;font-size:14px}
-    .start-button{position:absolute;inset:auto auto 20px 50%;transform:translateX(-50%);width:140px;height:48px;border:none;border-radius:30px;background:linear-gradient(45deg,var(--pink),var(--aqua));color:#fff;font-weight:800;cursor:pointer;z-index:5;animation:pulse 1.5s ease-in-out infinite}
-    .start-button.hidden{display:none}
-    .controls{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);display:flex;gap:12px}
-    .control-btn{width:45px;height:45px;background:rgba(255,255,255,.2);border:none;border-radius:50%;color:#fff;font-size:18px;cursor:pointer;backdrop-filter:blur(10px)}
-    .trend-badge{position:absolute;top:20px;left:20px;background:linear-gradient(45deg,var(--pink),#ff6b35);color:#fff;padding:8px 15px;border-radius:20px;font-size:12px;font-weight:700;animation:trendBlink 2s ease-in-out infinite}
-    .countdown{position:absolute;top:70px;left:20px;background:rgba(255,0,80,.9);color:#fff;padding:10px 15px;border-radius:15px;font-weight:700;font-size:14px;animation:urgency 1.5s ease-in-out infinite}
-    .preorder-modal{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;z-index:10}
-    .preorder-content{background:linear-gradient(135deg,#1a1a2e,#16213e);padding:32px;border-radius:20px;max-width:350px;border:2px solid var(--aqua);text-align:center}
-    .preorder-title{font-size:24px;font-weight:800;color:var(--aqua);margin-bottom:10px}
-    .preorder-price{font-size:32px;font-weight:900;color:#fff;margin:16px 0}
-    .price-strike{text-decoration:line-through;color:#666;font-size:20px;margin-right:10px}
-    .preorder-features{color:#fff;text-align:left;margin:16px 0}
-    .feature-item{display:flex;align-items:center;margin:8px 0;font-size:14px}
-    .preorder-btn{background:linear-gradient(45deg,var(--pink),var(--aqua));color:#fff;border:none;padding:12px 22px;border-radius:25px;font-size:16px;font-weight:700;cursor:pointer;margin:6px}
-    .close-btn{background:rgba(255,255,255,.2);color:#fff;border:none;padding:10px 16px;border-radius:15px;cursor:pointer}
-    /* animations */
-    @keyframes textPop{0%{transform:scale(.8) rotate(-5deg);opacity:0}50%{transform:scale(1.1) rotate(2deg)}100%{transform:scale(1) rotate(0);opacity:1}}
-    @keyframes shake{0%{transform:translateX(-2px)}100%{transform:translateX(2px)}}
-    @keyframes glow{0%{text-shadow:0 0 5px var(--aqua)}100%{text-shadow:0 0 20px var(--aqua),0 0 30px var(--aqua)}}
-    @keyframes uploadBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-    @keyframes magicSpin{0%{transform:rotate(0) scale(1)}25%{transform:rotate(90deg) scale(1.1)}50%{transform:rotate(180deg) scale(1)}75%{transform:rotate(270deg) scale(1.1)}100%{transform:rotate(360deg) scale(1)}}
-    @keyframes speedMove{0%{transform:translateX(-20px)}100%{transform:translateX(20px)}}
-    @keyframes explode{0%{transform:scale(0);opacity:1}100%{transform:scale(3);opacity:0}}
-    @keyframes heartPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.2);color:var(--pink)}}
-    @keyframes trendBlink{0%,100%{opacity:1}50%{opacity:.7}}
-    @keyframes urgency{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="tiktok-container">
-    <div class="countdown">⏰ Limited Time: 50% OFF!</div>
-    <div class="trend-badge">🔥 VIRAL</div>
+    <!-- Start Button -->
+    <button class="start-button" id="startBtn">▶️</button>
 
-    <!-- TikTok side icons -->
-    <div class="tiktok-hearts">
-      <div class="heart-icon" onclick="showPreorder()">❤️</div>
-      <div class="heart-icon">💬</div>
-      <div class="heart-icon">📤</div>
-      <div class="heart-icon">🎵</div>
-    </div>
-
-    <!-- Scenes -->
+    <!-- Scene 1 -->
     <div class="scene active" data-scene="1">
       <div class="hook-text problem-text">STOP! ✋</div>
       <div class="sub-text">Are you STILL paying lawyers $3,000+ for simple contracts?</div>
       <div class="visual-container">
-        <div class="money-rain" style="left:10%;animation-delay:0s">💸</div>
-        <div class="money-rain" style="left:30%;animation-delay:.5s">💸</div>
-        <div class="money-rain" style="left:50%;animation-delay:1s">💸</div>
-        <div class="money-rain" style="left:70%;animation-delay:1.5s">💸</div>
-        <div class="money-rain" style="left:90%;animation-delay:.3s">💸</div>
+        <div class="money-rain" style="left: 10%;">💸</div>
+        <div class="money-rain" style="left: 30%;">💸</div>
+        <div class="money-rain" style="left: 50%;">💸</div>
+        <div class="money-rain" style="left: 70%;">💸</div>
+        <div class="money-rain" style="left: 90%;">💸</div>
       </div>
     </div>
 
+    <!-- Scene 2 -->
     <div class="scene" data-scene="2">
       <div class="hook-text solution-text">Meet DocuGod ⚡</div>
       <div class="sub-text">Upload ANY document in 3 seconds</div>
-      <div class="visual-container"><div class="upload-demo">📁 ➡️ ☁️</div></div>
+      <div class="visual-container">
+        <div class="upload-demo">📁 ➡️ ☁️</div>
+      </div>
     </div>
 
+    <!-- Scene 3 -->
     <div class="scene" data-scene="3">
       <div class="hook-text feature-text">AI Magic ✨</div>
       <div class="sub-text">Edit, redact, and redline like a PRO</div>
@@ -100,94 +42,77 @@
       </div>
     </div>
 
+    <!-- Scene 4 -->
     <div class="scene" data-scene="4">
       <div class="hook-text">INSTANT Results ⚡</div>
       <div class="sub-text">Export to PDF, Word, anything!</div>
       <div class="visual-container">
         <div class="speed-lines"></div>
-        <div class="explosion"></div>
-        <div style="font-size:80px;z-index:1">💨📄</div>
+        <div style="font-size: 80px; z-index: 10;">💨📄</div>
       </div>
     </div>
 
+    <!-- Scene 5 -->
     <div class="scene" data-scene="5">
       <div class="hook-text cta-text">DocuGod</div>
-      <div class="sub-text">50% OFF Preorder!</div>
+      <div class="sub-text">Preorder Now</div>
+      <div class="typing-text" id="typingText"></div>
       <div class="visual-container">
-        <div style="font-size:80px" onclick="showPreorder()">🛒</div>
-        <div style="font-size:60px;margin-top:10px">👆 TAP TO PREORDER</div>
+        <div style="font-size: 80px;" onclick="showPreorder()">🛒</div>
+        <div style="font-size: 60px; margin-top: 10px;">👆 TAP TO PREORDER</div>
       </div>
     </div>
 
-    <!-- Caption -->
+    <!-- Caption Overlay -->
     <div class="caption-overlay">
       <div id="captionText">This AI tool will save you THOUSANDS! 💰</div>
       <div class="hashtags">#DocuGod #AItools #entrepreneur #businesshack #viral</div>
     </div>
-
-    <!-- Controls -->
-    <button id="startBtn" class="start-button">▶️ Tap to Start</button>
-    <div class="controls">
-      <button class="control-btn" onclick="togglePlay()">⏸️</button>
-      <button class="control-btn" onclick="nextScene()">⏭️</button>
-    </div>
-  </div>
-
-  <!-- Preorder Modal -->
-  <div class="preorder-modal" id="preorderModal">
-    <div class="preorder-content">
-      <div class="preorder-title">🚀 DocuGod Preorder</div>
-      <div class="preorder-price"><span class="price-strike">$99</span><span style="color:#25f4ee">$49</span></div>
-      <div class="preorder-features">
-        <div class="feature-item">✅ AI Document Editor</div>
-        <div class="feature-item">✅ Unlimited Uploads</div>
-        <div class="feature-item">✅ Professional Templates</div>
-        <div class="feature-item">✅ Export to Any Format</div>
-        <div class="feature-item">✅ Lifetime Updates</div>
-        <div class="feature-item">🎁 Early Access Bonus</div>
-      </div>
-      <button class="preorder-btn" onclick="processPreorder()">💳 PREORDER NOW - $49</button>
-      <div style="font-size:12px;color:#888;margin:8px 0">⚡ Limited Time: Only 100 spots left!</div>
-      <button class="close-btn" onclick="closePreorder()">Maybe Later</button>
-    </div>
   </div>
 
   <script>
-    // ====== AUDIO SOURCES (rename here if needed) ======
-    const VOICE_SRC = 'assets/voice.mp3'; // your ElevenLabs voiceover
-    const MUSIC_SRC = 'assets/music.mp3'; // background music
+    // ====== AUDIO SOURCES ======
+    const VOICE_SRC = 'assets/ElevenLabs.mp3';
+    const MUSIC_SRC = 'assets/Soul.mp3';
 
     let currentScene = 1;
     let isPlaying = false;
     let sceneTimer = null;
 
-    // build audio (kept separate to mix volumes)
     const voice = new Audio(VOICE_SRC);
     const music = new Audio(MUSIC_SRC);
-    voice.preload = 'auto'; music.preload = 'auto';
-    music.loop = true;       // music loops softly
-    music.volume = 0.35;     // music under VO track
-    voice.volume = 1.0;
+    voice.preload = 'auto';
+    music.preload = 'auto';
+    music.loop = true;
+    music.volume = 0.35;
 
-    const captions = {
-      1:"This AI tool will save you THOUSANDS! 💰",
-      2:"Just drag and drop your file! 📁",
-      3:"AI does ALL the work for you! 🤖✨",
-      4:"Export in seconds, not hours! ⚡",
-      5:"PREORDER NOW - 50% OFF! 🛒👆"
-    };
-
-    // iOS requires a gesture to start audio, so we show a start button
-    document.getElementById('startBtn').addEventListener('click', async ()=>{
+    async function unlockAndPlay(a){
       try {
-        await music.play();
-        await voice.play();
-        isPlaying = true;
-        document.getElementById('startBtn').classList.add('hidden');
-        startAuto();
-      } catch (e) {
-        alert("Tap again to allow audio playback.");
+        a.muted = false;
+        a.currentTime = 0;
+        await a.play();
+        return true;
+      } catch(e){
+        console.log('play() failed:', e);
+        return false;
       }
+    }
+
+    async function startBoth() {
+      const okV = await unlockAndPlay(voice);
+      const okM = await unlockAndPlay(music);
+      return okV || okM;
+    }
+
+    document.getElementById('startBtn').addEventListener('click', async () => {
+      const started = await startBoth();
+      if (!started) {
+        alert('If you’re on iPhone, turn off Silent Mode and tap again (volume up).');
+        return;
+      }
+      isPlaying = true;
+      document.getElementById('startBtn').classList.add('hidden');
+      startAuto();
     });
 
     function startAuto(){
@@ -199,36 +124,14 @@
       document.querySelector('.scene.active').classList.remove('active');
       currentScene = currentScene >= 5 ? 1 : currentScene + 1;
       document.querySelector(`[data-scene="${currentScene}"]`).classList.add('active');
-      document.getElementById('captionText').textContent = captions[currentScene];
+      document.getElementById('captionText').textContent = ({
+        1:"This AI tool will save you THOUSANDS! 💰",
+        2:"Just drag and drop your file! 📁",
+        3:"AI does ALL the work for you! 🤖✨",
+        4:"Export in seconds, not hours! ⚡",
+        5:"Preorder Now 🛒👆"
+      })[currentScene];
     }
-
-    function togglePlay(){
-      isPlaying = !isPlaying;
-      if (isPlaying){
-        voice.play(); music.play(); startAuto();
-      } else {
-        voice.pause(); music.pause(); if (sceneTimer) clearInterval(sceneTimer);
-      }
-    }
-
-    // Preorder modal
-    function showPreorder(){ document.getElementById('preorderModal').style.display='flex'; }
-    function closePreorder(){ document.getElementById('preorderModal').style.display='none'; }
-    function processPreorder(){
-      const btn = document.querySelector('.preorder-btn');
-      btn.textContent='⏳ Processing...'; btn.disabled = true;
-      setTimeout(()=>{
-        alert('🎉 Preorder Successful! Check your email for next steps.');
-        btn.textContent='💳 PREORDER NOW - $49'; btn.disabled = false; closePreorder();
-      },1500);
-    }
-
-    // expose for inline handlers
-    window.nextScene = nextScene;
-    window.togglePlay = togglePlay;
-    window.showPreorder = showPreorder;
-    window.closePreorder = closePreorder;
-    window.processPreorder = processPreorder;
   </script>
 </body>
 </html>
