@@ -1,137 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DocuGod - Viral TikTok Ad</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>DocuGod — 30-sec Ad</title>
+<link rel="stylesheet" href="style.css"/>
+<style>
+  /* Minimal ad styles (kept compact) */
+  .stage{width:375px;height:667px;margin:40px auto;background:#000;position:relative;overflow:hidden;border-radius:18px;border:1px solid #222}
+  .scene{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transform:scale(.96);transition:.35s ease}
+  .scene.active{opacity:1;transform:scale(1)}
+  .hook{color:#fff;font:900 28px/1.15 Poppins,system-ui,sans-serif;text-align:center;text-shadow:2px 2px 0 #ff0050;margin:0 18px 10px}
+  .sub{color:#ddd;font:600 16px/1.3 Poppins,system-ui,sans-serif;text-align:center;margin:0 22px}
+  .spark{position:absolute;font-size:22px;animation:s1 1.4s ease-out forwards}
+  @keyframes s1{0%{opacity:0;transform:scale(.4) translateY(30px)}60%{opacity:1}100%{opacity:0;transform:scale(1.8) translateY(-30px)}}
+  .controls{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:10px}
+  .ctrl{width:46px;height:46px;border-radius:50%;border:none;background:rgba(255,255,255,.2);color:#fff;font-size:18px;backdrop-filter:blur(10px);cursor:pointer}
+  .start{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+  .start button{width:88px;height:88px;border-radius:50%;border:none;background:linear-gradient(45deg,#ff0050,#25f4ee);color:#fff;font-size:34px;cursor:pointer;box-shadow:0 0 24px rgba(37,244,238,.35)}
+  .badge{position:absolute;top:12px;left:12px;background:linear-gradient(45deg,#ff0050,#ff6b35);color:#fff;padding:6px 12px;border-radius:16px;font:700 12px Poppins}
+  .caption{position:absolute;bottom:80px;left:14px;right:14px;color:#fff;font:700 15px Poppins;text-shadow:1px 1px 2px rgba(0,0,0,.7);text-align:left}
+  .cta-row{position:absolute;bottom:54px;left:0;right:0;display:flex;justify-content:center;gap:10px}
+  .cta{background:linear-gradient(45deg,#25f4ee,#14ff88);color:#000;font:900 14px Poppins;border:none;border-radius:18px;padding:10px 14px;cursor:pointer}
+  .ghost{background:transparent;border:1px solid #25f4ee;color:#25f4ee}
+</style>
 </head>
-<body>
-  <div class="tiktok-container">
-    <!-- Start Button -->
-    <button class="start-button" id="startBtn">▶️</button>
+<body class="page dark">
+  <div class="stage" role="region" aria-label="DocuGod 30-second advertisement">
 
-    <!-- Scene 1 -->
-    <div class="scene active" data-scene="1">
-      <div class="hook-text problem-text">STOP! ✋</div>
-      <div class="sub-text">Are you STILL paying lawyers $3,000+ for simple contracts?</div>
-      <div class="visual-container">
-        <div class="money-rain" style="left: 10%;">💸</div>
-        <div class="money-rain" style="left: 30%;">💸</div>
-        <div class="money-rain" style="left: 50%;">💸</div>
-        <div class="money-rain" style="left: 70%;">💸</div>
-        <div class="money-rain" style="left: 90%;">💸</div>
-      </div>
+    <div class="badge">NEW</div>
+
+    <!-- Scenes -->
+    <section class="scene active" data-scene="1">
+      <h2 class="hook">Edit any document. Fast.</h2>
+      <p class="sub">Upload. Edit. Redact. Export. Your docs, your control.</p>
+    </section>
+
+    <section class="scene" data-scene="2">
+      <h2 class="hook" style="text-shadow:2px 2px 0 #25f4ee">Powerful OCR</h2>
+      <p class="sub">Scans become clean, editable text.</p>
+    </section>
+
+    <section class="scene" data-scene="3">
+      <h2 class="hook">One-click Redaction</h2>
+      <p class="sub">Black out sensitive fields. Export in seconds.</p>
+    </section>
+
+    <section class="scene" data-scene="4">
+      <h2 class="hook">Ship-ready PDFs</h2>
+      <p class="sub">Keep layout crisp across PDF/Word/images.</p>
+    </section>
+
+    <section class="scene" data-scene="5">
+      <h2 class="hook">Try DocuGod</h2>
+      <p class="sub">See pricing & start today.</p>
+    </section>
+
+    <!-- Caption -->
+    <div class="caption" id="cap">This AI tool will save you hours.</div>
+
+    <!-- Start overlay -->
+    <div class="start" id="start">
+      <button id="startBtn" aria-label="Start video">▶</button>
     </div>
 
-    <!-- Scene 2 -->
-    <div class="scene" data-scene="2">
-      <div class="hook-text solution-text">Meet DocuGod ⚡</div>
-      <div class="sub-text">Upload ANY document in 3 seconds</div>
-      <div class="visual-container">
-        <div class="upload-demo">📁 ➡️ ☁️</div>
-      </div>
-    </div>
-
-    <!-- Scene 3 -->
-    <div class="scene" data-scene="3">
-      <div class="hook-text feature-text">AI Magic ✨</div>
-      <div class="sub-text">Edit, redact, and redline like a PRO</div>
-      <div class="visual-container">
-        <div class="magic-wand">🪄</div>
-      </div>
-    </div>
-
-    <!-- Scene 4 -->
-    <div class="scene" data-scene="4">
-      <div class="hook-text">INSTANT Results ⚡</div>
-      <div class="sub-text">Export to PDF, Word, anything!</div>
-      <div class="visual-container">
-        <div class="speed-lines"></div>
-        <div style="font-size: 80px; z-index: 10;">💨📄</div>
-      </div>
-    </div>
-
-    <!-- Scene 5 -->
-    <div class="scene" data-scene="5">
-      <div class="hook-text cta-text">DocuGod</div>
-      <div class="sub-text">Preorder Now</div>
-      <div class="typing-text" id="typingText"></div>
-      <div class="visual-container">
-        <div style="font-size: 80px;" onclick="showPreorder()">🛒</div>
-        <div style="font-size: 60px; margin-top: 10px;">👆 TAP TO PREORDER</div>
-      </div>
-    </div>
-
-    <!-- Caption Overlay -->
-    <div class="caption-overlay">
-      <div id="captionText">This AI tool will save you THOUSANDS! 💰</div>
-      <div class="hashtags">#DocuGod #AItools #entrepreneur #businesshack #viral</div>
+    <!-- Controls -->
+    <div class="controls">
+      <button class="ctrl" id="pauseBtn" aria-label="Pause/Play">⏸️</button>
+      <button class="ctrl" id="nextBtn" aria-label="Next">⏭️</button>
+      <a class="cta" href="pricing.html" aria-label="Go to pricing">See Pricing</a>
+      <a class="cta ghost" href="index.html" aria-label="Back home">Home</a>
     </div>
   </div>
 
-  <script>
-    // ====== AUDIO SOURCES ======
-    const VOICE_SRC = 'assets/ElevenLabs.mp3';
-    const MUSIC_SRC = 'assets/Soul.mp3';
+<script>
+  // ===== audio paths (make sure these files exist in /assets) =====
+  const VOICE = new Audio('assets/voice.mp3');  // your ElevenLabs
+  const MUSIC = new Audio('assets/music.mp3');  // your Soul track
+  MUSIC.loop = true; MUSIC.volume = 0.35;
 
-    let currentScene = 1;
-    let isPlaying = false;
-    let sceneTimer = null;
+  const captions = {
+    1: "This AI tool will save you hours.",
+    2: "Top-tier OCR turns scans into text.",
+    3: "Draw black boxes. Export redacted PDFs.",
+    4: "Layouts stay pixel-crisp on export.",
+    5: "Open pricing to get started today."
+  };
 
-    const voice = new Audio(VOICE_SRC);
-    const music = new Audio(MUSIC_SRC);
-    voice.preload = 'auto';
-    music.preload = 'auto';
-    music.loop = true;
-    music.volume = 0.35;
+  let scene = 1, playing = false, timer = null;
 
-    async function unlockAndPlay(a){
-      try {
-        a.muted = false;
-        a.currentTime = 0;
-        await a.play();
-        return true;
-      } catch(e){
-        console.log('play() failed:', e);
-        return false;
-      }
+  const scenes = () => document.querySelectorAll('.scene');
+  const cap = document.getElementById('cap');
+  const start = document.getElementById('start');
+  const startBtn = document.getElementById('startBtn');
+  const pauseBtn = document.getElementById('pauseBtn');
+  const nextBtn = document.getElementById('nextBtn');
+
+  function show(s){
+    scenes().forEach(el => el.classList.remove('active'));
+    document.querySelector(`[data-scene="${s}"]`).classList.add('active');
+    cap.textContent = captions[s];
+    for(let i=0;i<8;i++){
+      const sp = document.createElement('div');
+      sp.className='spark'; sp.textContent='✨';
+      sp.style.left = (Math.random()*80+10)+'%';
+      sp.style.top  = (Math.random()*70+10)+'%';
+      document.querySelector('.stage').appendChild(sp);
+      setTimeout(()=>sp.remove(),1400);
     }
+  }
 
-    async function startBoth() {
-      const okV = await unlockAndPlay(voice);
-      const okM = await unlockAndPlay(music);
-      return okV || okM;
-    }
+  function next(){
+    scene = scene>=5 ? 1 : scene+1;
+    show(scene);
+  }
 
-    document.getElementById('startBtn').addEventListener('click', async () => {
-      const started = await startBoth();
-      if (!started) {
-        alert('If you’re on iPhone, turn off Silent Mode and tap again (volume up).');
-        return;
-      }
-      isPlaying = true;
-      document.getElementById('startBtn').classList.add('hidden');
-      startAuto();
-    });
+  function play(){
+    playing = true;
+    pauseBtn.textContent='⏸️';
+    if (VOICE.paused) VOICE.play().catch(()=>{});
+    if (MUSIC.paused) MUSIC.play().catch(()=>{});
+    if (timer) clearInterval(timer);
+    timer = setInterval(next, 2500);
+  }
 
-    function startAuto(){
-      if (sceneTimer) clearInterval(sceneTimer);
-      sceneTimer = setInterval(nextScene, 2500);
-    }
+  function pause(){
+    playing = false;
+    pauseBtn.textContent='▶️';
+    VOICE.pause(); MUSIC.pause();
+    if (timer) clearInterval(timer);
+  }
 
-    function nextScene(){
-      document.querySelector('.scene.active').classList.remove('active');
-      currentScene = currentScene >= 5 ? 1 : currentScene + 1;
-      document.querySelector(`[data-scene="${currentScene}"]`).classList.add('active');
-      document.getElementById('captionText').textContent = ({
-        1:"This AI tool will save you THOUSANDS! 💰",
-        2:"Just drag and drop your file! 📁",
-        3:"AI does ALL the work for you! 🤖✨",
-        4:"Export in seconds, not hours! ⚡",
-        5:"Preorder Now 🛒👆"
-      })[currentScene];
-    }
-  </script>
+  async function kickOff(){
+    // required on iOS: user gesture before play
+    start.style.display='none';
+    try { await VOICE.play(); } catch(e){}
+    try { await MUSIC.play(); } catch(e){}
+    play();
+  }
+
+  startBtn.addEventListener('click', kickOff);
+  pauseBtn.addEventListener('click', ()=> playing ? pause() : play());
+  nextBtn.addEventListener('click', next);
+
+  // init first frame
+  show(1);
+</script>
 </body>
 </html>
