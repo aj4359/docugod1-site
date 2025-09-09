@@ -1,50 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DocuGod - AI Document Editor</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DocuGod – AI Document Editor</title>
+  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="DocuGod is an AI document editor for editing, redacting, and exporting PDFs and docs fast." />
 </head>
 <body>
-  <header>
-    <h1>📄 DocuGod</h1>
-    <p>Edit, redact, and transform your documents with AI</p>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="ad.html">Watch Ad</a> <!-- 👈 new link here -->
-    </nav>
+  <header class="container hero">
+    <h1>DocuGod</h1>
+    <p class="lead">AI-powered editing, redaction, and export for your documents.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="pricing.html">See Pricing</a>
+      <a class="btn btn-ghost" href="ad.html">Watch 30s Ad</a>
+    </div>
   </header>
 
-  <main>
-    <section>
-      <h2>Why DocuGod?</h2>
-      <p>
-        Stop wasting thousands on manual edits and lawyers.  
-        Upload any document, and DocuGod handles editing, redlining, and exporting—instantly.
-      </p>
-    </section>
-
-    <section>
-      <h2>Features</h2>
+  <main class="container features">
+    <section class="feature">
+      <h2>What you can do</h2>
       <ul>
-        <li>✅ AI-powered redaction & editing</li>
-        <li>✅ Export to PDF, Word, TXT</li>
-        <li>✅ Secure cloud storage</li>
-        <li>✅ Works on desktop & mobile</li>
+        <li>Edit PDFs, Word, and scanned images</li>
+        <li>Draw redaction boxes and export clean PDFs</li>
+        <li>AI suggestions for wording and structure</li>
       </ul>
-    </section>
-
-    <section>
-      <h2>Get Started</h2>
-      <p>Choose the plan that works best for you.</p>
-      <a href="pricing.html" class="cta-btn">View Pricing</a>
     </section>
   </main>
 
-  <footer>
-    <p>&copy; 2025 DocuGod. Built with ❤️ by TA GuruLabs.</p>
+  <footer class="container footer">
+    <small>© <span id="y"></span> DocuGod • Built by TA GuruLabs</small>
   </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
