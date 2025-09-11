@@ -1,52 +1,131 @@
-<script>
-  // ======= AUDIO SOURCES (place files in /assets) =======
-  const VOICE_SRC = 'assets/Voice.mp3';   // your uploaded voice
-  const MUSIC_SRC = 'assets/Music.mp3';   // your uploaded music
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DocuGod — 30s Ad</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body{margin:0;background:#000;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;color:#fff;display:flex;min-height:100vh;align-items:center;justify-content:center}
+    .wrap{width:375px;height:667px;background:#000;position:relative;overflow:hidden;border-radius:16px;border:1px solid #262626}
+    .badge{position:absolute;left:12px;top:12px;background:linear-gradient(135deg,#ff6b6b,#f06595);padding:8px 14px;border-radius:20px;font-weight:800;font-size:12px}
+    .sc{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:32px}
+    .sc.active{display:flex}
+    .sc h1{font-size:34px;margin:0 0 10px;text-shadow:0 2px 18px rgba(255,255,255,.12)}
+    .sc p{opacity:.92;margin:0}
+    .controls{position:absolute;right:12px;bottom:12px;display:flex;gap:10px}
+    .small{font-size:12px;opacity:.8;text-decoration:none;color:#7cf7e1}
+    .start-overlay{position:absolute;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:10}
+    .start-btn{appearance:none;border:0;border-radius:999px;padding:16px 22px;font-weight:900;cursor:pointer;background:linear-gradient(135deg,#25f4ee,#20e3c2);color:#041018;font-size:16px}
+    .top-links{position:absolute;left:12px;top:48px;display:flex;gap:10px}
+    .top-links a{color:#20e3c2;text-decoration:none;font-weight:700;font-size:12px}
+  </style>
+</head>
+<body>
+  <div class="wrap" aria-label="DocuGod 30-second advert">
+    <div class="badge">VIRAL</div>
 
-  const voice = new Audio(VOICE_SRC);
-  const music = new Audio(MUSIC_SRC);
-  music.loop = true;
-  music.volume = 0.35;
+    <div class="top-links">
+      <a href="index.html">Home</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="redact.html">Try Redactor</a>
+    </div>
 
-  let currentScene = 1;
-  let timer = null;
+    <!-- Scenes -->
+    <section class="sc active" data-s="1">
+      <h1>STOP! ✋</h1>
+      <p>Still paying £££ for simple docs?</p>
+    </section>
 
-  function showScene(n){
-    document.querySelector('.scene.active')?.classList.remove('active');
-    document.querySelector(`[data-scene="${n}"]`)?.classList.add('active');
-  }
+    <section class="sc" data-s="2">
+      <h1>Meet DocuGod ⚡</h1>
+      <p>Upload • Edit • Redact • Export</p>
+    </section>
 
-  async function safePlay(a){
-    try { 
-      a.muted = false; 
-      a.currentTime = 0; 
-      await a.play(); 
-      return true; 
+    <section class="sc" data-s="3">
+      <h1>AI Magic ✨</h1>
+      <p>Smart rewrites. Instant redaction.</p>
+    </section>
+
+    <section class="sc" data-s="4">
+      <h1>Fast Results 💨</h1>
+      <p>Clean PDFs & DOCX in seconds.</p>
+    </section>
+
+    <section class="sc" data-s="5">
+      <h1>DocuGod</h1>
+      <p>Ready when you are. Try it today.</p>
+    </section>
+
+    <!-- iOS/Android audio unlock fallback -->
+    <div id="unlock" class="start-overlay">
+      <button class="start-btn" id="unlockBtn">Tap to Unmute ▶️</button>
+    </div>
+
+    <div class="controls">
+      <a class="small" href="index.html">Back to Home</a>
+    </div>
+  </div>
+
+  <script>
+    // ====== Audio sources (your files in /assets) ======
+    const VOICE_SRC = 'assets/Voice.mp3';
+    const MUSIC_SRC = 'assets/Music.mp3';
+
+    const voice = new Audio(VOICE_SRC);
+    const music = new Audio(MUSIC_SRC);
+    music.loop = true;
+    music.volume = 0.32;
+    voice.preload = 'auto';
+    music.preload = 'auto';
+
+    // Attempt autoplay on page load
+    let scene = 1, timer = null;
+
+    function show(n){
+      document.querySelector('.sc.active')?.classList.remove('active');
+      document.querySelector(`.sc[data-s="${n}"]`)?.classList.add('active');
     }
-    catch(e){ 
-      console.log('play error', e); 
-      return false; 
-    }
-  }
-
-  async function startAd(){
-    document.getElementById('startBtn').style.display='none';
-
-    const v = await safePlay(voice);
-    const m = await safePlay(music);
-
-    if(!v && !m){
-      alert('If sound is off, toggle Silent Mode / turn volume up and tap ▶️ again.');
-      document.getElementById('startBtn').style.display='block';
-      return;
+    function startScenes(){
+      if (timer) clearInterval(timer);
+      timer = setInterval(()=>{
+        scene = scene >= 5 ? 1 : (scene + 1);
+        show(scene);
+      }, 2500);
     }
 
-    // cycle scenes every 2.5s
-    timer = setInterval(()=>{
-      currentScene = currentScene >= 5 ? 1 : currentScene + 1;
-      showScene(currentScene);
-    }, 2500);
-  }
+    async function tryPlay(a){
+      try {
+        a.muted = false;
+        a.currentTime = 0;
+        await a.play();
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
 
-  document.getElementById('startBtn').addEventListener('click', startAd);
-</script>
+    async function autoStart(){
+      // Give the browser ~1s to buffer, then try autoplay.
+      setTimeout(async () => {
+        const okV = await tryPlay(voice);
+        const okM = await tryPlay(music);
+        if (!(okV || okM)) {
+          // Show unlock overlay if blocked
+          document.getElementById('unlock').style.display = 'flex';
+        }
+      }, 700);
+      startScenes();
+    }
+
+    async function unlockAudio(){
+      await tryPlay(voice);
+      await tryPlay(music);
+      document.getElementById('unlock').style.display = 'none';
+    }
+
+    document.getElementById('unlockBtn').addEventListener('click', unlockAudio);
+    document.addEventListener('DOMContentLoaded', autoStart);
+  </script>
+</body>
+</html>
