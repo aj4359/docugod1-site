@@ -3,54 +3,75 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>DocuGod – Pricing</title>
+  <title>DocuGod — Pricing</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="container">
-    <h1>Choose your plan</h1>
-    <p class="lead">Start with the essentials, scale to business.</p>
-    <p><a class="link" href="index.html">← Back to Home</a></p>
+  <header class="site-header">
+    <a class="brand" href="index.html">DocuGod</a>
+    <nav class="site-nav">
+      <a href="pricing.html" aria-current="page">Pricing</a>
+      <a href="redact.html">Try Redactor</a>
+      <a href="ad.html">Ad</a>
+    </nav>
   </header>
 
-  <main class="container pricing-grid">
-    <article class="card">
-      <h2>Free</h2>
-      <p class="muted">Try DocuGod with basic features.</p>
-      <ul class="bullets">
-        <li>Preview editor & redaction demo</li>
-        <li>Sample templates</li>
-        <li>Email onboarding guide</li>
-      </ul>
-      <a class="btn btn-primary" href="YOUR_PAYHIP_FREE_LINK">Get Free</a>
-    </article>
+  <main class="container">
+    <h1 class="page-title">Pricing</h1>
+    <p class="page-sub">Start with the essentials, scale to business.</p>
 
-    <article class="card highlight">
-      <div class="badge">Popular</div>
-      <h2>Pro</h2>
-      <p class="muted">Full editor for creators & teams of one.</p>
-      <ul class="bullets">
-        <li>Full redaction + export to PDF</li>
-        <li>Unlimited uploads</li>
-        <li>AI rewrite & smart suggestions</li>
-      </ul>
-      <a class="btn btn-primary" href="YOUR_PAYHIP_PRO_LINK">Buy Pro</a>
-    </article>
+    <section class="plans">
+      <!-- Free -->
+      <article class="plan card">
+        <div class="plan-head">
+          <h2>Free</h2>
+          <p class="plan-note">Try DocuGod with basic features.</p>
+        </div>
+        <ul class="plan-list">
+          <li>Preview editor & redaction demo</li>
+          <li>Sample templates</li>
+          <li>Email onboarding guide</li>
+        </ul>
+        <a class="btn btn-primary block"
+           href="https://payhip.com/b/Urc5P" target="_blank" rel="noopener">Get Free</a>
+      </article>
 
-    <article class="card">
-      <h2>Business</h2>
-      <p class="muted">For teams that need more control.</p>
-      <ul class="bullets">
-        <li>Everything in Pro</li>
-        <li>Team seats, roles & logs</li>
-        <li>Priority support</li>
-      </ul>
-      <a class="btn btn-primary" href="YOUR_PAYHIP_BUSINESS_LINK">Buy Business</a>
-    </article>
+      <!-- Pro -->
+      <article class="plan card pop">
+        <div class="plan-head">
+          <h2>Pro</h2>
+          <p class="plan-note">Watermark removed, AI Co-Pilot.</p>
+        </div>
+        <ul class="plan-list">
+          <li>Unlimited redaction & exports</li>
+          <li>AI rewrite & redline co-pilot</li>
+          <li>Priority email support</li>
+        </ul>
+        <a class="btn btn-primary block"
+           href="https://payhip.com/b/EtBob" target="_blank" rel="noopener">Get Pro</a>
+      </article>
+
+      <!-- Business -->
+      <article class="plan card">
+        <div class="plan-head">
+          <h2>Business</h2>
+          <p class="plan-note">Team seats & branding.</p>
+        </div>
+        <ul class="plan-list">
+          <li>Up to 10 seats</li>
+          <li>Branding & watermark control</li>
+          <li>Shared templates & roles</li>
+        </ul>
+        <a class="btn btn-primary block"
+           href="https://payhip.com/b/D2t37" target="_blank" rel="noopener">Get Business</a>
+      </article>
+    </section>
+
+    <p class="center">
+      Have questions? <a class="link" href="index.html">Back to Home</a>
+    </p>
   </main>
 
-  <footer class="container footer">
-    <small>Questions? Email hello@yourdomain</small>
-  </footer>
+  <footer class="site-footer">© 2025 TA GuruLabs + AIDES</footer>
 </body>
 </html>
