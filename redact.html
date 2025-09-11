@@ -1,23 +1,67 @@
-<!doctype html>
-<html lang="en"><head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>DocuGod — Redactor</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-  <script>
-    pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DocuGod — PDF Redactor</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .tool{padding:18px}
+    .tool .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:10px 0}
+    .tool h1{margin-top:0}
+    .out{margin-top:16px;border:1px dashed var(--line);border-radius:12px;padding:12px;background:var(--panel)}
+  </style>
 </head>
 <body>
-  <header class="container"><div class="logo">✒️ DocuGod</div></header>
-  <main class="container">
-    <h2>PDF Redactor</h2>
-    <input type="file" id="fileInput" accept="application/pdf">
-    <button id="exportBtn">Redact & Export</button>
-    <canvas id="pdfCanvas" width="600"></canvas>
+  <header class="site-header">
+    <a class="brand" href="index.html">DocuGod</a>
+    <nav class="site-nav">
+      <a href="pricing.html">Pricing</a>
+      <a href="ad.html">Ad</a>
+    </nav>
+  </header>
+
+  <main class="container card">
+    <section class="tool">
+      <h1>PDF Redactor</h1>
+      <div class="row">
+        <input id="fileInput" type="file" accept=".pdf" />
+        <button id="runBtn" class="btn btn-primary">Redact & Export</button>
+      </div>
+      <div id="status" class="muted">Select a PDF to begin.</div>
+      <div class="out">
+        <canvas id="preview" style="max-width:100%"></canvas>
+      </div>
+    </section>
   </main>
+
+  <footer class="site-footer">© 2025 TA GuruLabs + AIDES</footer>
+
   <script src="redactor.js"></script>
+  <script>
+    // Minimal glue; your redactor.js should do the heavy lifting
+    const fileInput = document.getElementById('fileInput');
+    const runBtn = document.getElementById('runBtn');
+    const status = document.getElementById('status');
+
+    let file = null;
+    fileInput.addEventListener('change', e => {
+      file = e.target.files?.[0] || null;
+      status.textContent = file ? `Loaded: ${file.name}` : 'Select a PDF to begin.';
+    });
+
+    runBtn.addEventListener('click', async () => {
+      if (!file) { status.textContent = 'Please choose a PDF first.'; return; }
+      status.textContent = 'Processing…';
+      try {
+        // Expect redactor.js to expose a global processPdf(file)
+        const result = await window.processPdf?.(file);
+        status.textContent = result?.message || 'Done.';
+      } catch (e) {
+        console.error(e);
+        status.textContent = 'Something went wrong while redacting.';
+      }
+    });
+  </script>
 </body>
 </html>
