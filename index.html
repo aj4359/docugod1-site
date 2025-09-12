@@ -1,52 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>DocuGod — AI Document Editor</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="site-header">
-    <a class="brand" href="index.html">DocuGod</a>
-    <nav class="site-nav">
+<header class="site-header">
+  <div class="container row between middle">
+    <a class="brand" href="./">DocuGod</a>
+    <nav class="nav">
+      <a href="demo.html">Try Demo</a>
       <a href="pricing.html">Pricing</a>
-      <a href="redact.html">Try Redactor</a>
-      <a href="ad.html">Watch the Ad</a>
+      <a href="#features">Features</a>
     </nav>
-  </header>
+  </div>
+</header>
 
-  <main class="container">
-    <section class="hero card">
-      <h1>AI-powered document editor</h1>
-      <p class="sub">Redact, edit, sign and export — instantly.</p>
-
-      <ul class="feature-list">
-        <li>Upload any PDF / DOCX</li>
-        <li>AI rewrites & redlines</li>
-        <li>One-click redaction</li>
-        <li>Export to clean PDF or DOCX</li>
-      </ul>
-
+<main>
+  <section class="hero">
+    <div class="container center">
+      <h1>Edit. Redact. Export. <span class="accent">In minutes.</span></h1>
+      <p class="sub">Upload PDFs, images, or docs. Draw blackouts, rewrite text, and export clean files. No discounts, no preorders—just use it.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="redact.html">Open Redactor</a>
-        <a class="btn btn-ghost" href="pricing.html">View Pricing</a>
-        <a class="btn btn-ghost" href="ad.html">🎬 Watch the DocuGod Ad</a>
+        <a class="btn primary" href="demo.html">🚀 Try the Live Demo</a>
+        <a class="btn" href="pricing.html">View Pricing</a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="grid-2">
-      <div class="card">
-        <h2>Built for speed ⚡</h2>
-        <p>Stop spending hours on formatting, redaction and exports. DocuGod automates the boring parts so you can ship faster.</p>
-      </div>
-      <div class="card">
-        <h2>Privacy first 🔒</h2>
-        <p>Redact sensitive details locally in your browser. Export clean files with confidence.</p>
-      </div>
-    </section>
-  </main>
+  <section id="features" class="container grid-3">
+    <div class="card">
+      <h3>PDF + Images</h3>
+      <p>Open PDFs or scans; page-by-page redaction on a canvas.</p>
+    </div>
+    <div class="card">
+      <h3>Precise Redaction</h3>
+      <p>Click-drag black boxes; move/resize; export flattened result.</p>
+    </div>
+    <div class="card">
+      <h3>Export Fast</h3>
+      <p>Save as PDF (multi-page) or PNG (per page) for quick share.</p>
+    </div>
+  </section>
+</main>
 
-  <footer class="site-footer">© 2025 TA GuruLabs + AIDES</footer>
+<footer class="site-footer">
+  <div class="container row between">
+    <small>© <span id="y"></span> DocuGod.</small>
+    <div class="muted">No encouragement of unlawful use. Use on documents you own.</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
