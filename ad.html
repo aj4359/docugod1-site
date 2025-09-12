@@ -1,113 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>DocuGod — 30s Ad</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DocuGod Ad</title>
   <style>
-    body{margin:0;background:#000;display:flex;min-height:100vh;align-items:center;justify-content:center}
-    .wrap{width:375px;height:667px;background:#000;position:relative;overflow:hidden;border-radius:16px;border:1px solid var(--line)}
-    .badge{position:absolute;left:12px;top:12px;background:linear-gradient(135deg,#ff6b6b,#f06595);padding:8px 14px;border-radius:20px;font-weight:800;font-size:12px;color:#fff}
-    .sc{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:32px;color:#fff}
-    .sc.active{display:flex}
-    .sc h1{font-size:34px;margin:0 0 10px;text-shadow:0 2px 18px rgba(255,255,255,.12)}
-    .sc p{opacity:.92;margin:0}
-    .top-links{position:absolute;left:12px;top:48px;display:flex;gap:10px}
-    .top-links a{color:#7cf7e1;text-decoration:none;font-weight:700;font-size:12px}
-    .start-overlay{position:absolute;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:10}
-    .start-btn{appearance:none;border:0;border-radius:999px;padding:16px 22px;font-weight:900;cursor:pointer;background:linear-gradient(135deg,#25f4ee,#20e3c2);color:#041018;font-size:16px}
-    .back{position:absolute;right:12px;bottom:12px;color:#a8c7ff;text-decoration:none;font-size:12px}
+    body { 
+      margin: 0; 
+      background: #000; 
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      height: 100vh; 
+      overflow: hidden; 
+    }
+    img {
+      max-height: 100vh;
+      width: auto;
+      display: none;
+    }
+    img.active {
+      display: block;
+      animation: fade 2.5s;
+    }
+    @keyframes fade {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
   </style>
 </head>
 <body>
-  <div class="wrap" aria-label="DocuGod 30-second advert">
-    <div class="badge">VIRAL</div>
+  <!-- Avatars -->
+  <img id="img1" src="assets/avatar-happy.jpg" class="active">
+  <img id="img2" src="assets/avatar-sad.jpg">
 
-    <div class="top-links">
-      <a href="index.html">Home</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="redact.html">Try Redactor</a>
-    </div>
-
-    <!-- Scenes -->
-    <section class="sc active" data-s="1">
-      <h1>STOP! ✋</h1>
-      <p>Still paying £££ for simple docs?</p>
-    </section>
-
-    <section class="sc" data-s="2">
-      <h1>Meet DocuGod ⚡</h1>
-      <p>Upload • Edit • Redact • Export</p>
-    </section>
-
-    <section class="sc" data-s="3">
-      <h1>AI Magic ✨</h1>
-      <p>Smart rewrites. Instant redaction.</p>
-    </section>
-
-    <section class="sc" data-s="4">
-      <h1>Fast Results 💨</h1>
-      <p>Clean PDFs & DOCX in seconds.</p>
-    </section>
-
-    <section class="sc" data-s="5">
-      <h1>DocuGod</h1>
-      <p>Ready when you are. Try it today.</p>
-    </section>
-
-    <!-- iOS/Android audio unlock fallback -->
-    <div id="unlock" class="start-overlay">
-      <button class="start-btn" id="unlockBtn">Tap to Unmute ▶️</button>
-    </div>
-
-    <a class="back" href="index.html">Back to Home</a>
-  </div>
+  <!-- Audio -->
+  <audio id="voice" src="assets/Voice.mp3" autoplay></audio>
+  <audio id="music" src="assets/Music.mp3" autoplay loop></audio>
 
   <script>
-    // Audio sources (ensure files exist)
-    const VOICE_SRC = 'assets/Voice.mp3';
-    const MUSIC_SRC = 'assets/Music.mp3';
-
-    const voice = new Audio(VOICE_SRC);
-    const music = new Audio(MUSIC_SRC);
-    music.loop = true;
-    music.volume = 0.32;
-    voice.preload = 'auto';
-    music.preload = 'auto';
-
-    let scene = 1, timer = null;
-
-    function show(n){
-      document.querySelector('.sc.active')?.classList.remove('active');
-      document.querySelector(`.sc[data-s="${n}"]`)?.classList.add('active');
-    }
-    function startScenes(){
-      if (timer) clearInterval(timer);
-      timer = setInterval(()=>{
-        scene = scene >= 5 ? 1 : (scene + 1);
-        show(scene);
-      }, 2500);
-    }
-    async function tryPlay(a){
-      try { a.muted = false; a.currentTime = 0; await a.play(); return true; }
-      catch { return false; }
-    }
-    async function autoStart(){
-      setTimeout(async () => {
-        const okV = await tryPlay(voice);
-        const okM = await tryPlay(music);
-        if (!(okV || okM)) document.getElementById('unlock').style.display = 'flex';
-      }, 600);
-      startScenes();
-    }
-    async function unlockAudio(){
-      await tryPlay(voice);
-      await tryPlay(music);
-      document.getElementById('unlock').style.display = 'none';
-    }
-    document.getElementById('unlockBtn').addEventListener('click', unlockAudio);
-    document.addEventListener('DOMContentLoaded', autoStart);
+    const imgs = [document.getElementById('img1'), document.getElementById('img2')];
+    let current = 0;
+    setInterval(() => {
+      imgs[current].classList.remove('active');
+      current = (current + 1) % imgs.length;
+      imgs[current].classList.add('active');
+    }, 2500);
   </script>
 </body>
 </html>
