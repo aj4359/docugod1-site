@@ -1,0 +1,42 @@
+name: Deploy to Netlify
+on:
+
+  push:
+
+    branches: [ main ]   # change if your branch is not 'main'
+
+  workflow_dispatch:
+
+
+
+jobs:
+
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout repository
+
+        uses: actions/checkout@v4
+
+
+
+      - name: Deploy to Netlify
+
+        uses: nwtgck/actions-netlify@v2
+
+        with:
+
+          publish-dir: ./
+
+          production-deploy: true
+
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+        env:
+
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+
+          NETLIFY_SITE_ID: 44133ef1-ee1b-4f7d-9cfe-884f9e3422f3
