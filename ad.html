@@ -1,51 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DocuGod Ad</title>
-  <style>
-    body { 
-      margin: 0; 
-      background: #000; 
-      display: flex; 
-      justify-content: center; 
-      align-items: center; 
-      height: 100vh; 
-      overflow: hidden; 
-    }
-    img {
-      max-height: 100vh;
-      width: auto;
-      display: none;
-    }
-    img.active {
-      display: block;
-      animation: fade 2.5s;
-    }
-    @keyframes fade {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DocuGod — 30s Ad</title>
+<link rel="stylesheet" href="style.css" />
+<style>
+  .tiktok-container{width:375px;max-width:100%;height:667px;background:#000;margin:32px auto;position:relative;overflow:hidden;border-radius:16px;border:1px solid #222}
+  .scene{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;padding:32px;text-align:center;color:#fff}
+  .scene.active{display:flex}
+  .scene h1{font-size:32px;margin:.25rem 0}
+  .scene p{opacity:.9}
+  #startBtn{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:84px;height:84px;border-radius:50%;
+    border:none;cursor:pointer;font-size:28px;color:#000;font-weight:800;background:linear-gradient(135deg,#25f4ee,#ff0050)}
+  .corner-links{position:absolute;left:12px;top:12px;display:flex;gap:8px;z-index:2}
+  .corner-links a{font-size:12px;opacity:.9;color:#aef;text-decoration:none}
+</style>
 </head>
 <body>
-  <!-- Avatars -->
-  <img id="img1" src="assets/avatar-happy.jpg" class="active">
-  <img id="img2" src="assets/avatar-sad.jpg">
+  <div class="tiktok-container" role="region" aria-label="DocuGod 30 second advert">
+    <div class="corner-links">
+      <a class="link" href="index.html">Home</a>
+      <a class="link" href="pricing.html">Pricing</a>
+    </div>
 
-  <!-- Audio -->
-  <audio id="voice" src="assets/Voice.mp3" autoplay></audio>
-  <audio id="music" src="assets/Music.mp3" autoplay loop></audio>
+    <div class="scene active" data-scene="1">
+      <h1>STOP! ✋</h1>
+      <p>Still paying big money for simple documents?</p>
+    </div>
+    <div class="scene" data-scene="2">
+      <h1>Meet DocuGod ⚡</h1>
+      <p>Upload any doc. Edit. Redact. Export.</p>
+    </div>
+    <div class="scene" data-scene="3">
+      <h1>AI Magic ✨</h1>
+      <p>Smart rewrites and instant redaction.</p>
+    </div>
+    <div class="scene" data-scene="4">
+      <h1>Fast Results 🚀</h1>
+      <p>Export clean PDFs in seconds.</p>
+    </div>
+    <div class="scene" data-scene="5">
+      <h1>DocuGod</h1>
+      <p>Ready when you are. Try it today.</p>
+    </div>
+
+    <button id="startBtn" aria-label="Play ad" hidden>▶️</button>
+  </div>
 
   <script>
-    const imgs = [document.getElementById('img1'), document.getElementById('img2')];
-    let current = 0;
-    setInterval(() => {
-      imgs[current].classList.remove('active');
-      current = (current + 1) % imgs.length;
-      imgs[current].classList.add('active');
-    }, 2500);
+    // IMPORTANT: Filenames are case-sensitive on Netlify.
+    const VOICE_SRC = 'assets/Voice.mp3?v=2';
+    const MUSIC_SRC = 'assets/Music.mp3?v=2';
+
+    const voice = new Audio(VOICE_SRC);
+    const music = new Audio(MUSIC_SRC);
+
+    // Tuning
+    music.loop = true;
+    music.volume = 0.35;
+    voice.preload = 'auto';
+    music.preload = 'auto';
+
+    // Scene driver
+    let currentScene = 1;
+    let timer = null;
+    const showScene = (n)=>{
+      document.querySelector('.scene.active')?.classList.remove('active');
+      document.querySelector(`[data-scene="${n}"]`)?.classList.add('active');
+    };
+
+    // Helper: safe play with logging
+    async function safePlay(a, label){
+      try {
+        a.currentTime = 0;
+        a.muted = false;
+        await a.play();
+        return true;
+      } catch (e) {
+        console.warn('Audio play blocked:', label, e?.name, e?.message);
+        return false;
+      }
+    }
+
+    // Start after gesture (mobile) or immediately (desktop)
+    async function startPlayback(){
+      document.getElementById('startBtn').hidden = true;
+
+      const v = await safePlay(voice, 'voice');
+      const m = await safePlay(music, 'music');
+
+      // If both failed, show hint and show button again
+      if(!v && !m){
+        alert('Sound is blocked by the browser. Turn volume on and tap ▶️.');
+        document.getElementById('startBtn').hidden = false;
+        return;
+      }
+
+      // Rotate scenes
+      if (timer) clearInterval(timer);
+      timer = setInterval(()=>{
+        currentScene = currentScene >= 5 ? 1 : currentScene + 1;
+        showScene(currentScene);
+      }, 2500);
+    }
+
+    // iOS/Android need a user gesture; desktop can attempt autoplay.
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    const startBtn = document.getElementById('startBtn');
+    startBtn.addEventListener('click', startPlayback);
+
+    if (isMobile){
+      // Show button for the single tap unlock
+      startBtn.hidden = false;
+    } else {
+      // Try to autoplay on desktop
+      startPlayback();
+    }
+
+    // Extra diagnostics: log load errors
+    [voice, music].forEach((a)=>{
+      a.addEventListener('error', () => {
+        console.error('Audio load error for', a.src, a.error);
+        alert('Audio failed to load: ' + a.src.split('/').pop());
+      });
+    });
   </script>
 </body>
 </html>
