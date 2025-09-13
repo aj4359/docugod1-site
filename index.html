@@ -2,175 +2,91 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DocuGod — AI Document Engine</title>
   <meta name="theme-color" content="#0b0f12" />
-
-  <!-- minimal styling -->
   <style>
-    :root{
-      --bg:#0b0f12;--card:#121821;--muted:#98a2b3;--brandA:#25f4ee;--brandB:#ff0050;
-      --accent:#16f;--green:#27e89e;--txt:#f2f5f7
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle, #0b0f12 0%, #121821 100%);
+      color: #fff;
+      text-align: center;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;background:radial-gradient(1200px 600px at 50% -10%,#15324a 0%,#0b0f12 55%);
-      color:var(--txt);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial
+    header {
+      padding: 20px;
+      font-size: 1.8em;
+      font-weight: bold;
+      background: #111;
     }
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:1024px;margin:0 auto;padding:20px}
-    header{display:flex;align-items:center;justify-content:space-between;padding:8px 0}
-    .logo{display:flex;align-items:center;gap:.6rem}
-    .dot{width:12px;height:12px;border-radius:50%;
-      background:linear-gradient(135deg,var(--brandA),var(--brandB))}
-    .nav a{opacity:.9;margin-left:18px}
-    .nav a:hover{opacity:1;text-decoration:underline}
-    .hero{
-      margin-top:24px;background:rgba(255,255,255,.04);border:1px solid #212b36;
-      border-radius:16px;padding:28px
+    .adverts {
+      margin: 50px auto;
+      font-size: 1.6em;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
-    h1{font-size:clamp(28px,5vw,44px);margin:0 0 10px}
-    .bullets{display:grid;gap:12px;margin:18px 0}
-    .bullet{background:#0e131a;border:1px solid #1d2632;border-radius:12px;padding:14px 16px}
-    .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
-    .btn{
-      display:inline-flex;align-items:center;gap:.5rem;
-      padding:12px 18px;border-radius:999px;border:1px solid #243040;cursor:pointer
+    .hidden {
+      display: none;
     }
-    .btn.primary{border:none;background:linear-gradient(135deg,var(--brandA),var(--brandB));color:#000;font-weight:700}
-    .btn.ghost{background:#0d141c;color:#cfe6ff}
-    /* ad phone */
-    .phone{
-      width:min(380px,100%);height:680px;background:#000;border-radius:18px;border:1px solid #2a2f36;
-      overflow:hidden;margin:24px auto 0;position:relative
+    .buttons {
+      margin: 40px auto;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
     }
-    .scene{position:absolute;inset:0;display:none;align-items:center;justify-content:center;text-align:center;padding:26px}
-    .scene.active{display:flex;flex-direction:column}
-    .scene h2{font-size:28px;margin:.1rem 0}
-    .scene p{opacity:.9}
-    #play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:88px;height:88px;border-radius:50%;
-      border:none;background:linear-gradient(135deg,var(--brandA),var(--brandB));color:#000;font-size:30px;font-weight:800;cursor:pointer}
-    .hint{font-size:12px;color:var(--muted);text-align:center;margin-top:6px}
-    footer{opacity:.75;text-align:center;font-size:12px;margin:26px 0}
+    .buttons a {
+      padding: 15px 25px;
+      background: #16f;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+    .buttons a:hover {
+      background: #27e89e;
+    }
   </style>
-
-  <!-- make sure the browser starts fetching your mp3s early -->
-  <link rel="preload" href="assets/Voice.mp3" as="audio" />
-  <link rel="preload" href="assets/Music.mp3" as="audio" />
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="logo"><span class="dot"></span><strong>DocuGod</strong></div>
-      <nav class="nav">
-        <a href="#pricing">Pricing</a>
-        <a href="#ad">Watch the Ad</a>
-      </nav>
-    </header>
+  <header>DocuGod — AI Document Engine</header>
 
-    <section class="hero">
-      <h1>AI-powered document editor</h1>
-      <p style="opacity:.9;margin:6px 0 14px">Redact, edit, sign and export — instantly.</p>
-      <div class="bullets">
-        <div class="bullet">Upload any PDF / DOCX</div>
-        <div class="bullet">AI rewrites &amp; redlines</div>
-        <div class="bullet">One-click redaction</div>
-        <div class="bullet">Export to clean PDF or DOCX</div>
-      </div>
-      <div class="cta">
-        <a class="btn primary" href="#ad">Open Redactor &amp; Ad</a>
-        <a class="btn ghost" href="#pricing">View Pricing</a>
-      </div>
-
-      <!-- Ad phone with audio-only scenes -->
-      <div id="ad" class="phone" role="region" aria-label="DocuGod 30s advert">
-        <div class="scene active" data-scene="1">
-          <h2>STOP! ✋</h2>
-          <p>Still paying big money for simple documents?</p>
-        </div>
-        <div class="scene" data-scene="2">
-          <h2>Meet DocuGod ⚡</h2>
-          <p>Upload any doc. Edit. Redact. Export.</p>
-        </div>
-        <div class="scene" data-scene="3">
-          <h2>AI Magic ✨</h2>
-          <p>Smart rewrites and instant redaction.</p>
-        </div>
-        <div class="scene" data-scene="4">
-          <h2>Fast Results 🚀</h2>
-          <p>Export clean PDFs in seconds.</p>
-        </div>
-        <div class="scene" data-scene="5">
-          <h2>DocuGod</h2>
-          <p>Ready when you are. Try it today.</p>
-        </div>
-        <button id="play" aria-label="Play ad">▶️</button>
-      </div>
-      <div class="hint">Tap ▶️ once to enable audio (required by iOS/Android). Scenes auto-rotate.</div>
-    </section>
-
-    <!-- simple pricing with your PayHip links -->
-    <section id="pricing" class="hero">
-      <h2 style="margin:0 0 8px">Pricing</h2>
-      <div class="cta" style="margin-top:10px">
-        <a class="btn primary" href="https://payhip.com/b/Urc5P" target="_blank" rel="noopener">Get Free</a>
-        <a class="btn ghost" href="https://payhip.com/b/EtBob" target="_blank" rel="noopener">Pro Plan</a>
-        <a class="btn ghost" href="https://payhip.com/b/D2t37" target="_blank" rel="noopener">Business Plan</a>
-      </div>
-    </section>
-
-    <footer>© 2025 TA GuruLabs • DocuGod</footer>
+  <div class="adverts">
+    <span id="ad1">AI-powered redaction, editing & compliance.</span>
+    <span id="ad2" class="hidden">Upload any PDF or DOCX — instant results.</span>
+    <span id="ad3" class="hidden">100% irreversible redactions — stress tested.</span>
+    <span id="ad4" class="hidden">Proven on 10,000+ documents in real-world trials.</span>
   </div>
 
+  <div class="buttons">
+    <a href="https://payhip.com/b/Urc5P" target="_blank">Free Plan</a>
+    <a href="https://payhip.com/b/D2t37" target="_blank">Business Plan</a>
+    <a href="https://payhip.com/b/EtBob" target="_blank">Pro Plan</a>
+    <a href="https://payhip.com/b/Lu5Vb" target="_blank">SIGMA Drop 001</a>
+  </div>
+
+  <!-- Audio -->
+  <audio id="voice" src="assets/Voice.mp3"></audio>
+  <audio id="music" src="assets/Music.mp3" loop></audio>
+
   <script>
-    // AUDIO paths (case-sensitive, must exist in /assets)
-    const VOICE_SRC = 'assets/Voice.mp3';
-    const MUSIC_SRC = 'assets/Music.mp3';
+    // Rotate adverts every 2.5s
+    const ads = document.querySelectorAll(".adverts span");
+    let current = 0;
+    setInterval(() => {
+      ads[current].classList.add("hidden");
+      current = (current + 1) % ads.length;
+      ads[current].classList.remove("hidden");
+    }, 2500);
 
-    const voice = new Audio(VOICE_SRC);
-    const music = new Audio(MUSIC_SRC);
-    music.loop = true;
-    music.volume = 0.35;
-
-    let current = 1, timer = null;
-
-    function show(n){
-      document.querySelector('.scene.active')?.classList.remove('active');
-      document.querySelector(`[data-scene="${n}"]`)?.classList.add('active');
-    }
-
-    async function safePlay(a){
-      try {
-        a.muted = false;
-        a.currentTime = 0;
-        await a.play();
-        return true;
-      } catch(e){ return false; }
-    }
-
-    async function startAd(){
-      const btn = document.getElementById('play');
-      btn.style.display = 'none';
-
-      // iOS/Android require a gesture to start audio
-      const vOk = await safePlay(voice);
-      const mOk = await safePlay(music);
-
-      if(!vOk && !mOk){
-        alert('If sound is off, toggle Silent Mode or turn volume up and tap ▶️ again.');
-        btn.style.display = 'block';
-        return;
-      }
-
-      // rotate scenes every 2.5s
-      timer = setInterval(()=>{
-        current = current >= 5 ? 1 : current + 1;
-        show(current);
-      }, 2500);
-    }
-
-    document.getElementById('play').addEventListener('click', startAd);
+    // Start audio automatically when page loads
+    window.addEventListener("click", () => {
+      document.getElementById("voice").play();
+      document.getElementById("music").play();
+    }, { once: true });
   </script>
 </body>
 </html>
