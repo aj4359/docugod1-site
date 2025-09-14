@@ -1,35 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DocuGod — AI Document Engine</title>
-  <meta name="theme-color" content="#0b0f12" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DocuGod</title>
   <style>
+    /* Reset + Base */
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: radial-gradient(circle, #0b0f12 0%, #121821 100%);
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #000; /* Miami penthouse black */
       color: #fff;
       text-align: center;
-    }
-
-    header {
-      padding: 20px;
-      font-size: 1.8em;
-      font-weight: bold;
-      background: #111;
-    }
-
-    .adverts {
-      margin: 50px auto;
-      font-size: 1.6em;
-      height: 80px;
       display: flex;
-      align-items: center;
+      flex-direction: column;
       justify-content: center;
+      align-items: center;
+      min-height: 100vh;
     }
 
+    /* Glowing Header */
+    header {
+      font-size: 3rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, #25f4ee, #ff0050);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #25f4ee, 0 0 20px #25f4ee; }
+      to { text-shadow: 0 0 20px #ff0050, 0 0 40px #ff0050; }
+    }
+
+    /* Subheader */
+    p {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      opacity: 0.85;
+      max-width: 600px;
+    }
+
+    /* Buttons */
     .buttons {
       margin: 40px auto;
       display: flex;
@@ -40,35 +55,35 @@
 
     .buttons a {
       padding: 15px 25px;
-      background: #16f;
+      background: #25f4ee;
       color: white;
       text-decoration: none;
       font-weight: bold;
       border-radius: 6px;
       transition: 0.3s;
+      box-shadow: 0 0 10px #25f4ee, 0 0 20px #25f4ee;
     }
 
     .buttons a:hover {
-      background: #27e89e;
+      background: #ff0050;
+      box-shadow: 0 0 10px #ff0050, 0 0 20px #ff0050;
     }
   </style>
 </head>
 <body>
-  <header>DocuGod — AI Document Engine</header>
+  <!-- Glowing Header -->
+  <header>DocuGod</header>
 
-  <div class="adverts">
-    <span id="ad1">AI-powered redaction, editing & compliance.</span>
-  </div>
+  <!-- Subheader -->
+  <p>
+    AI-Powered Document Editing. Redact. Rewrite. Export. Instantly.
+  </p>
 
+  <!-- Buttons -->
   <div class="buttons">
-    <a href="https://payhip.com/b/Urc5P" target="_blank">Free Plan</a>
-    <a href="https://payhip.com/b/D2t37" target="_blank">Business Plan</a>
-    <a href="https://payhip.com/b/EtBob" target="_blank">Pro Plan ($12/mo)</a>
-    <a href="https://payhip.com/b/LuSVb" target="_blank">SIGMA Drop 001</a>
+    <a href="ad.html">▶️ Watch Ad</a>
+    <a href="pricing.html">💳 Pricing</a>
+    <a href="https://payhip.com/yourproduct" target="_blank">🚀 Buy Now</a>
   </div>
-
-  <!-- Audio -->
-  <audio id="voice" src="assets/Voice.mp3"></audio>
-  <audio id="music" src="assets/Music.mp3" loop></audio>
 </body>
 </html>
