@@ -1,60 +1,36 @@
-/* ===== DocuGod base theme ===== */
-:root{
-  --bg: #0b0f14;
-  --panel:#0f151c;
-  --line:#1e2a36;
-  --text:#e8f6ef;
-  --muted:#9bb2c5;
-  --brand:#20e3c2;
-  --brand2:#25f4ee;
-  --accent:#ff4d6d;
-}
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
-  color:var(--text);
-  background:
-    radial-gradient(1200px 500px at 50% -20%, #14202b 0%, transparent 60%),
-    linear-gradient(#0b0f14, #0b0f14);
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #fff;
+  text-align: center;
+  height: 100vh;
+  background: linear-gradient(-45deg, #0b0f12, #121821, #1a0033, #002244);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
 }
 
-/* Layout */
-.container{max-width:980px;margin:0 auto;padding:24px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px}
-.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+/* Animate the gradient for a living, neon vibe */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
-/* Header */
-.site-header{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;border-bottom:1px solid var(--line);background:rgba(11,15,20,.6);backdrop-filter:blur(8px)}
-.brand{font-weight:900;letter-spacing:.2px;color:var(--brand);text-decoration:none;font-size:22px}
-.site-nav a{margin-left:14px;text-decoration:none;color:#a8c7ff;font-weight:700}
-.site-nav a[aria-current="page"]{color:#fff}
+/* Neon Buttons */
+.buttons a {
+  padding: 15px 25px;
+  background: #16f;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 6px;
+  transition: 0.3s;
+  box-shadow: 0 0 10px rgba(22, 102, 255, 0.7),
+              0 0 20px rgba(22, 102, 255, 0.5);
+}
 
-/* Hero / content */
-.hero h1{margin:0 0 8px;font-size:36px}
-.sub{opacity:.9;margin:0 0 16px}
-.feature-list{list-style:none;padding:0;margin:18px 0;display:grid;gap:10px}
-.feature-list li{background:#0b1218;border:1px solid var(--line);padding:10px 14px;border-radius:10px}
-
-/* Buttons */
-.btn{appearance:none;border:0;border-radius:999px;padding:14px 20px;font-weight:800;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:10px}
-.btn-primary{background:linear-gradient(135deg,var(--brand2),var(--brand));color:#041018}
-.btn-ghost{background:#18222d;color:var(--text);border:1px solid var(--line)}
-.btn.block{display:block;text-align:center;width:100%}
-
-/* Pricing */
-.page-title{margin:0 0 6px}
-.page-sub{opacity:.85;margin:0 0 22px}
-.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
-.plan.pop{box-shadow:0 0 0 2px rgba(32,227,194,.25)}
-.plan-head h2{margin:0 0 4px}
-.plan-note{margin:0 0 10px;opacity:.85}
-.plan-list{list-style:none;margin:0 0 18px;padding:0}
-.plan-list li{padding:9px 12px;margin:8px 0;border-radius:10px;background:#0b1218;border:1px solid var(--line)}
-
-/* Misc */
-.center{text-align:center}
-.link{color:#7cf7e1}
-.muted{color:var(--muted)}
-.site-footer{padding:24px;text-align:center;opacity:.7}
+.buttons a:hover {
+  background: #27e89e;
+  box-shadow: 0 0 15px rgba(39, 232, 158, 0.9),
+              0 0 30px rgba(39, 232, 158, 0.7);
+}
