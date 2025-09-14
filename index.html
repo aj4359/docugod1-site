@@ -1,47 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DocuGod</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DocuGod — AI Document Engine</title>
+  <meta name="theme-color" content="#0b0f12" />
   <style>
     /* Reset + Base */
     body {
       margin: 0;
-      padding: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #000; /* Miami penthouse black */
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle, #0b0f12 0%, #121821 100%);
       color: #fff;
       text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
     }
 
-    /* Glowing Header */
+    /* Header with logo + title */
     header {
-      font-size: 3rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      background: linear-gradient(90deg, #25f4ee, #ff0050);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: glow 3s ease-in-out infinite alternate;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      background: #111;
+      padding: 20px;
     }
 
-    @keyframes glow {
-      from { text-shadow: 0 0 10px #25f4ee, 0 0 20px #25f4ee; }
-      to { text-shadow: 0 0 20px #ff0050, 0 0 40px #ff0050; }
+    header img.logo {
+      height: 60px;   /* adjust size */
+      width: auto;
     }
 
-    /* Subheader */
-    p {
-      margin-top: 20px;
-      font-size: 1.2rem;
-      opacity: 0.85;
-      max-width: 600px;
+    header h1 {
+      font-size: 1.6em;
+      margin: 0;
+      font-weight: bold;
+    }
+
+    /* Adverts / tagline */
+    .adverts {
+      margin: 40px auto 20px;
+      font-size: 1.2em;
+      line-height: 1.5;
+      max-width: 700px;
     }
 
     /* Buttons */
@@ -52,38 +52,40 @@
       gap: 20px;
       flex-wrap: wrap;
     }
-
     .buttons a {
       padding: 15px 25px;
-      background: #25f4ee;
+      background: #16f;
       color: white;
       text-decoration: none;
       font-weight: bold;
       border-radius: 6px;
       transition: 0.3s;
-      box-shadow: 0 0 10px #25f4ee, 0 0 20px #25f4ee;
     }
-
     .buttons a:hover {
-      background: #ff0050;
-      box-shadow: 0 0 10px #ff0050, 0 0 20px #ff0050;
+      background: #27e89e;
     }
   </style>
 </head>
 <body>
-  <!-- Glowing Header -->
-  <header>DocuGod</header>
 
-  <!-- Subheader -->
-  <p>
-    AI-Powered Document Editing. Redact. Rewrite. Export. Instantly.
-  </p>
+  <!-- Header -->
+  <header>
+    <img src="assets/tagurulabs-logo.png" alt="TA GuruLabs Logo" class="logo" />
+    <h1>DocuGod — AI Document Engine</h1>
+  </header>
 
-  <!-- Buttons -->
-  <div class="buttons">
-    <a href="ad.html">▶️ Watch Ad</a>
-    <a href="pricing.html">💳 Pricing</a>
-    <a href="https://payhip.com/yourproduct" target="_blank">🚀 Buy Now</a>
+  <!-- Tagline -->
+  <div class="adverts">
+    AI-powered redaction, editing & compliance.
   </div>
+
+  <!-- PayHip Buttons -->
+  <div class="buttons">
+    <a href="https://payhip.com/b/Urc5P" target="_blank">Free Plan</a>
+    <a href="https://payhip.com/b/D2t37" target="_blank">Business Plan</a>
+    <a href="https://payhip.com/b/EtBob" target="_blank">Pro Plan</a>
+    <a href="https://payhip.com/b/Lu5Vb" target="_blank">SIGMA Drop 001</a>
+  </div>
+
 </body>
 </html>
