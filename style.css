@@ -1,43 +1,32 @@
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: #000;
+  font-family: Arial, sans-serif;
+  background: radial-gradient(circle, #0b0f12 0%, #121821 100%);
   color: #fff;
   text-align: center;
 }
 
-/* Neon Glowing Header */
 header {
-  font-size: 2.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: #111;
+  font-size: 1.8em;
   font-weight: bold;
-  margin-top: 40px;
-  color: #fff;
-  text-shadow: 
-    0 0 5px #16f,
-    0 0 10px #16f,
-    0 0 20px #16f,
-    0 0 40px rgba(22, 102, 255, 0.8);
-  animation: pulseGlow 3s ease-in-out infinite alternate;
+  gap: 15px;
 }
 
-@keyframes pulseGlow {
-  from {
-    text-shadow: 
-      0 0 5px #16f,
-      0 0 10px #16f,
-      0 0 20px #16f,
-      0 0 40px rgba(22, 102, 255, 0.8);
-  }
-  to {
-    text-shadow: 
-      0 0 10px #27e89e,
-      0 0 20px #27e89e,
-      0 0 40px #27e89e,
-      0 0 60px rgba(39, 232, 158, 0.9);
-  }
+header img {
+  height: 50px;
+  width: auto;
 }
 
-/* Buttons */
+.adverts {
+  margin: 40px auto;
+  font-size: 1.2em;
+}
+
 .buttons {
   margin: 40px auto;
   display: flex;
@@ -45,6 +34,7 @@ header {
   gap: 20px;
   flex-wrap: wrap;
 }
+
 .buttons a {
   padding: 15px 25px;
   background: #16f;
@@ -53,10 +43,19 @@ header {
   font-weight: bold;
   border-radius: 6px;
   transition: 0.3s;
-  box-shadow: 0 0 10px #16f, 0 0 20px #16f;
 }
 
 .buttons a:hover {
   background: #27e89e;
-  box-shadow: 0 0 15px #27e89e, 0 0 30px #27e89e;
+}
+
+footer {
+  margin-top: 60px;
+  padding: 20px;
+  font-size: 0.9em;
+  color: #777;
+}
+
+footer span {
+  color: #27e89e;
 }
