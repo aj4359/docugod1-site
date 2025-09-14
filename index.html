@@ -13,23 +13,23 @@
       color: #fff;
       text-align: center;
     }
+
     header {
       padding: 20px;
       font-size: 1.8em;
       font-weight: bold;
       background: #111;
     }
+
     .adverts {
       margin: 50px auto;
       font-size: 1.6em;
       height: 80px;
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
     }
-    .hidden {
-      display: none;
-    }
+
     .buttons {
       margin: 40px auto;
       display: flex;
@@ -37,6 +37,7 @@
       gap: 20px;
       flex-wrap: wrap;
     }
+
     .buttons a {
       padding: 15px 25px;
       background: #16f;
@@ -46,6 +47,7 @@
       border-radius: 6px;
       transition: 0.3s;
     }
+
     .buttons a:hover {
       background: #27e89e;
     }
@@ -56,37 +58,17 @@
 
   <div class="adverts">
     <span id="ad1">AI-powered redaction, editing & compliance.</span>
-    <span id="ad2" class="hidden">Upload any PDF or DOCX — instant results.</span>
-    <span id="ad3" class="hidden">100% irreversible redactions — stress tested.</span>
-    <span id="ad4" class="hidden">Proven on 10,000+ documents in real-world trials.</span>
   </div>
 
   <div class="buttons">
     <a href="https://payhip.com/b/Urc5P" target="_blank">Free Plan</a>
     <a href="https://payhip.com/b/D2t37" target="_blank">Business Plan</a>
-    <a href="https://payhip.com/b/EtBob" target="_blank">Pro Plan</a>
-    <a href="https://payhip.com/b/Lu5Vb" target="_blank">SIGMA Drop 001</a>
+    <a href="https://payhip.com/b/EtBob" target="_blank">Pro Plan ($12/mo)</a>
+    <a href="https://payhip.com/b/LuSVb" target="_blank">SIGMA Drop 001</a>
   </div>
 
   <!-- Audio -->
   <audio id="voice" src="assets/Voice.mp3"></audio>
   <audio id="music" src="assets/Music.mp3" loop></audio>
-
-  <script>
-    // Rotate adverts every 2.5s
-    const ads = document.querySelectorAll(".adverts span");
-    let current = 0;
-    setInterval(() => {
-      ads[current].classList.add("hidden");
-      current = (current + 1) % ads.length;
-      ads[current].classList.remove("hidden");
-    }, 2500);
-
-    // Start audio automatically when user clicks
-    window.addEventListener("click", () => {
-      document.getElementById("voice").play();
-      document.getElementById("music").play();
-    }, { once: true });
-  </script>
 </body>
 </html>
