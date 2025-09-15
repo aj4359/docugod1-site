@@ -1,129 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>DocuGod — 30s Ad</title>
 <link rel="stylesheet" href="style.css" />
 <style>
-  .tiktok-container{width:375px;max-width:100%;height:667px;background:#000;margin:32px auto;position:relative;overflow:hidden;border-radius:16px;border:1px solid #222}
-  .scene{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;padding:32px;text-align:center;color:#fff}
+  .frame{width:375px;height:667px;margin:24px auto;border:1px solid #132; border-radius:16px; overflow:hidden; position:relative; background:#000}
+  .topbar{position:absolute; inset:12px 12px auto 12px; display:flex; gap:10px; align-items:center}
+  .mark{opacity:.25}
+  .scene{position:absolute; inset:0; display:none; align-items:center; justify-content:center; flex-direction:column; text-align:center; padding:32px}
   .scene.active{display:flex}
-  .scene h1{font-size:32px;margin:.25rem 0}
+  .scene h3{font-size:28px; margin:0 0 8px; text-shadow:0 0 18px #0ff7}
   .scene p{opacity:.9}
-  #startBtn{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:84px;height:84px;border-radius:50%;
-    border:none;cursor:pointer;font-size:28px;color:#000;font-weight:800;background:linear-gradient(135deg,#25f4ee,#ff0050)}
-  .corner-links{position:absolute;left:12px;top:12px;display:flex;gap:8px;z-index:2}
-  .corner-links a{font-size:12px;opacity:.9;color:#aef;text-decoration:none}
+  .start{position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:84px; height:84px; border:0; border-radius:50%;
+    font-weight:800; font-size:28px; cursor:pointer; color:#000; background:linear-gradient(135deg,#0ff,#06f); box-shadow:0 0 32px #0cf6}
+  .badge{position:absolute; right:12px; top:12px; font-size:10px; letter-spacing:.12em; opacity:.9}
 </style>
 </head>
 <body>
-  <div class="tiktok-container" role="region" aria-label="DocuGod 30 second advert">
-    <div class="corner-links">
-      <a class="link" href="index.html">Home</a>
-      <a class="link" href="pricing.html">Pricing</a>
-    </div>
-
-    <div class="scene active" data-scene="1">
-      <h1>STOP! ✋</h1>
-      <p>Still paying big money for simple documents?</p>
-    </div>
-    <div class="scene" data-scene="2">
-      <h1>Meet DocuGod ⚡</h1>
-      <p>Upload any doc. Edit. Redact. Export.</p>
-    </div>
-    <div class="scene" data-scene="3">
-      <h1>AI Magic ✨</h1>
-      <p>Smart rewrites and instant redaction.</p>
-    </div>
-    <div class="scene" data-scene="4">
-      <h1>Fast Results 🚀</h1>
-      <p>Export clean PDFs in seconds.</p>
-    </div>
-    <div class="scene" data-scene="5">
-      <h1>DocuGod</h1>
-      <p>Ready when you are. Try it today.</p>
-    </div>
-
-    <button id="startBtn" aria-label="Play ad" hidden>▶️</button>
+<header class="wrap">
+  <div class="brand">
+    <svg class="logo" width="24" height="24" viewBox="0 0 128 128" aria-hidden="true"><defs><linearGradient id="g3" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0ff"/><stop offset="1" stop-color="#06f"/></linearGradient></defs><rect rx="28" width="128" height="128" fill="none" stroke="url(#g3)" stroke-width="6"/><path d="M28 40h44l16 16v32a12 12 0 0 1-12 12H40a12 12 0 0 1-12-12z" fill="none" stroke="#0ff" stroke-width="6"/><path d="M72 40v16h16" fill="none" stroke="#0ff" stroke-width="6"/></svg>
+    <h1>DocuGod</h1>
   </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="pricing.html">Pricing</a>
+  </nav>
+</header>
 
-  <script>
-    // IMPORTANT: Filenames are case-sensitive on Netlify.
-    const VOICE_SRC = 'assets/Voice.mp3?v=2';
-    const MUSIC_SRC = 'assets/Music.mp3?v=2';
+<main>
+  <div class="frame">
+    <div class="topbar">
+      <svg class="mark" width="20" height="20" viewBox="0 0 128 128" aria-hidden="true"><rect rx="28" width="128" height="128" fill="none" stroke="#0ff9" stroke-width="6"/></svg>
+      <span style="opacity:.7">DocuGod</span>
+    </div>
+    <div class="badge">AUTO-EDIT • REDLINE • EXPORT</div>
 
-    const voice = new Audio(VOICE_SRC);
-    const music = new Audio(MUSIC_SRC);
+    <section class="scene active" data-s="1">
+      <h3>STOP! ✋</h3>
+      <p>Still paying big money for simple documents?</p>
+    </section>
 
-    // Tuning
-    music.loop = true;
-    music.volume = 0.35;
-    voice.preload = 'auto';
-    music.preload = 'auto';
+    <section class="scene" data-s="2">
+      <h3>Meet DocuGod ⚡</h3>
+      <p>Upload any doc. Edit. Redact. Export.</p>
+    </section>
 
-    // Scene driver
-    let currentScene = 1;
-    let timer = null;
-    const showScene = (n)=>{
-      document.querySelector('.scene.active')?.classList.remove('active');
-      document.querySelector(`[data-scene="${n}"]`)?.classList.add('active');
-    };
+    <section class="scene" data-s="3">
+      <h3>AI Magic ✨</h3>
+      <p>Smart rewrites and instant redaction.</p>
+    </section>
 
-    // Helper: safe play with logging
-    async function safePlay(a, label){
-      try {
-        a.currentTime = 0;
-        a.muted = false;
-        await a.play();
-        return true;
-      } catch (e) {
-        console.warn('Audio play blocked:', label, e?.name, e?.message);
-        return false;
-      }
-    }
-    // Start after gesture (mobile) or immediately (desktop)
-    async function startPlayback(){
-      document.getElementById('startBtn').hidden = true;
+    <section class="scene" data-s="4">
+      <h3>Fast Results ⚡</h3>
+      <p>Clean PDFs in seconds.</p>
+    </section>
 
-      const v = await safePlay(voice, 'voice');
-      const m = await safePlay(music, 'music');
+    <section class="scene" data-s="5">
+      <h3>Try DocuGod</h3>
+      <p>Start free. Upgrade when ready.</p>
+    </section>
 
-      // If both failed, show hint and show button again
-      if(!v && !m){
-        alert('Sound is blocked by the browser. Turn volume on and tap ▶️.');
-        document.getElementById('startBtn').hidden = false;
-        return;
-      }
+    <button id="go" class="start" aria-label="Play ad">▶️</button>
+  </div>
+</main>
 
-      // Rotate scenes
-      if (timer) clearInterval(timer);
-      timer = setInterval(()=>{
-        currentScene = currentScene >= 5 ? 1 : currentScene + 1;
-        showScene(currentScene);
-      }, 2500);
-    }
+<footer class="wrap foot">
+  <a class="btn ghost" href="index.html">← Back</a>
+</footer>
 
-    // iOS/Android need a user gesture; desktop can attempt autoplay.
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    const startBtn = document.getElementById('startBtn');
-    startBtn.addEventListener('click', startPlayback);
+<script>
+  // Works without audio; adds voice/music if files exist.
+  const VOICE = 'assets/voice.mp3';
+  const MUSIC = 'assets/music.mp3';
+  const btn = document.getElementById('go');
+  let t=null, n=1;
 
-    if (isMobile){
-      // Show button for the single tap unlock
-      startBtn.hidden = false;
-    } else {
-      // Try to autoplay on desktop
-      startPlayback();
-    }
-
-    // Extra diagnostics: log load errors
-    [voice, music].forEach((a)=>{
-      a.addEventListener('error', () => {
-        console.error('Audio load error for', a.src, a.error);
-        alert('Audio failed to load: ' + a.src.split('/').pop());
-      });
+  async function tryPlay(src, loop=false, vol=1){
+    return new Promise(async res=>{
+      const a = new Audio(); a.src = src; a.loop = loop; a.volume = vol; a.preload='auto';
+      a.addEventListener('error', ()=>res(null), {once:true});
+      a.addEventListener('canplaythrough', async ()=>{
+        try{ a.muted=false; a.currentTime=0; await a.play(); res(a); }
+        catch{ res(null); }
+      }, {once:true});
+      a.load();
     });
-  </script>
+  }
+
+  async function start(){
+    btn.style.display='none';
+    // attempt audio; continue regardless
+    const [v,m] = await Promise.all([tryPlay(VOICE,false,1), tryPlay(MUSIC,true,0.35)]);
+    // scene cycle
+    if(t) clearInterval(t);
+    t = setInterval(()=>{
+      document.querySelector('.scene.active')?.classList.remove('active');
+      n = n>=5 ? 1 : n+1;
+      document.querySelector(`[data-s="${n}"]`)?.classList.add('active');
+    }, 2500);
+  }
+  btn.addEventListener('click', start);
+</script>
 </body>
 </html>
