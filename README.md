@@ -1,13 +1,4 @@
-# Assets Folder
+# DocuGod — Vercel Pack (Final placeholders)
 
-This folder holds all static assets for the DocuGod site.
-
-## Current files
-- `voice.mp3` → main narration audio (from ElevenLabs).
-- `music.mp3` → background soundtrack (Soul track).
-
-## Usage
-These files are referenced in `ad.html`:
-```html
-const VOICE_SRC = 'assets/voice.mp3';
-const MUSIC_SRC = 'assets/music.mp3';
+Deploy: push to GitHub, import in Vercel as Other/Static, Deploy.
+Replace links in pricing.html, drop teaser in assets/demo.mp4.
